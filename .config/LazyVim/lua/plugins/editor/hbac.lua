@@ -7,6 +7,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    threshold = 6,
+    threshold = 10,
   },
 }
