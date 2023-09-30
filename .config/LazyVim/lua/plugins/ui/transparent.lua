@@ -9,11 +9,7 @@ return {
       transparent.clear_prefix("lualine")
       transparent.clear_prefix("NeoTree")
 
-      transparent.setup({
-        extra_groups = {
-          "NormalFloat",
-        },
-      })
+      transparent.setup()
     end,
   },
   {
