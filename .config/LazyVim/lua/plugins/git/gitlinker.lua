@@ -1,9 +1,6 @@
 return {
   "ruifm/gitlinker.nvim",
-  opts = {
-    mappings = nil,
-    print_url = false,
-  },
+
   keys = {
     {
       "<leader>gy",
@@ -13,5 +10,10 @@ return {
       mode = { "n", "v" },
       desc = "Yank git link",
     },
+  },
+
+  opts = {
+    mappings = nil,
+    print_url = false,
   },
 }

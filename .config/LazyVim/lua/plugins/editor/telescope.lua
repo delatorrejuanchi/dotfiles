@@ -1,12 +1,6 @@
 return {
   "telescope.nvim",
-  dependencies = {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    config = function()
-      require("telescope").load_extension("fzf")
-    end,
-  },
+
   opts = {
     defaults = {
       path_display = { "smart" },
@@ -19,8 +13,9 @@ return {
       sorting_strategy = "ascending",
     },
     pickers = {
+      -- https://github.com/hongxuchen/dotfiles/blob/302c37fc1bf6dc67f97c3c732e0c54df6da308f3/_config/nvim/lua/plug/telescope/init.lua#L40
       lsp_references = {
-        show_line = false, -- https://github.com/hongxuchen/dotfiles/blob/2cc2206e5280f8d1cf2ba0a81d6648e63529b26a/_config/nvim/lua/plug/telescope/init.lua#L40
+        show_line = false,
         include_declaration = false,
       },
     },

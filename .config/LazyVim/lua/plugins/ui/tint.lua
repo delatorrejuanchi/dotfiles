@@ -1,6 +1,8 @@
 return {
   "levouh/tint.nvim",
+
   event = "VeryLazy",
+
   opts = {
     highlight_ignore_patterns = {
       "WinSeparator",

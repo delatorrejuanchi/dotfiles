@@ -5,14 +5,18 @@ end
 return {
   {
     "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
     build = ":Copilot auth",
-    lazy = false,
+
+    cmd = "Copilot",
+    event = "InsertEnter",
+
     opts = {
       suggestion = {
         enabled = true,
         auto_trigger = true,
-        debounce = 50,
+      },
+      filetypes = {
+        markdown = true,
       },
     },
   },

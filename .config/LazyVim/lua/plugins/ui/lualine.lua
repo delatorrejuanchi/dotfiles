@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+
   opts = function()
     local icons = require("lazyvim.config").icons
 
@@ -36,7 +37,12 @@ return {
         lualine_a = {},
         lualine_b = {},
         lualine_c = { filetype, filename, diff, diagnostics },
-        lualine_x = {},
+        lualine_x = {
+          {
+            require("noice").api.status.mode["get"],
+            cond = require("noice").api.status.mode["has"],
+          },
+        },
         lualine_y = {},
         lualine_z = {},
       },

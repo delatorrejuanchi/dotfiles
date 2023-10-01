@@ -17,7 +17,6 @@ return {
     name = "catppuccin",
     optional = true,
 
-    ---@class CatppuccinOptions
     opts = {
       transparent_background = true,
     },

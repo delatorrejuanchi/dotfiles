@@ -1,8 +1,6 @@
 return {
   "f-person/git-blame.nvim",
-  opts = {
-    enabled = false,
-  },
+
   keys = {
     {
       "<leader>gY",
@@ -12,5 +10,9 @@ return {
       mode = { "n", "v" },
       desc = "Yank commit link",
     },
+  },
+
+  opts = {
+    enabled = false,
   },
 }

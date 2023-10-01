@@ -19,6 +19,7 @@ return {
       "BufReadPre " .. vault .. "/**.md",
       "BufNewFile " .. vault .. "/**.md",
     },
+
     keys = {
       { prefix .. "f", "<cmd>ObsidianQuickSwitch<CR>", desc = "Quick Switch" },
       { prefix .. "t", "<cmd>ObsidianToday<CR>", desc = "Today" },
@@ -74,11 +75,14 @@ return {
 
         return out
       end,
+
+      log_level = vim.log.levels.WARN,
     },
   },
   {
     "folke/which-key.nvim",
     optional = true,
+
     opts = {
       defaults = {
         [prefix] = { name = "+obsidian" },

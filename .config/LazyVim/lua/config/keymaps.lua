@@ -1,3 +1,5 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- Add undo break-points
+vim.api.nvim_set_keymap("i", ".", ".<c-g>u", { noremap = true })
+vim.api.nvim_set_keymap("i", ",", ",<c-g>u", { noremap = true })
+vim.api.nvim_set_keymap("i", ";", ";<c-g>u", { noremap = true })
+vim.api.nvim_set_keymap("i", "<CR>", "<CR><c-g>u", { noremap = true })

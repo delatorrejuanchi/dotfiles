@@ -1,14 +1,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "php",
-      })
+      vim.list_extend(opts.ensure_installed, { "php" })
     end,
   },
   {
     "williamboman/mason.nvim",
+
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, { "phpactor", "php-cs-fixer" })
@@ -16,6 +16,7 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
+
     opts = function(_, opts)
       local nls = require("null-ls")
       vim.list_extend(opts.sources, {
