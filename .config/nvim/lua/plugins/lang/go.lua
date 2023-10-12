@@ -13,7 +13,16 @@ return {
 
     opts = {
       linters_by_ft = {
-        go = { "golangcilint", "gofumpt" },
+        go = { "golangcilint" },
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+
+    opts = {
+      formatters_by_ft = {
+        go = { "gofumpt" },
       },
     },
   },
