@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
 
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "markdown", "markdown_inline" })
+      vim.list_extend(opts.ensure_installed, { "html", "css" })
     end,
   },
   {
@@ -11,7 +11,8 @@ return {
 
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "marksman" })
+      vim.list_extend(opts.ensure_installed, { "html-lsp", "css-lsp", "emmet-ls" })
     end,
   },
+  { import = "lazyvim.plugins.extras.lang.tailwind" },
 }

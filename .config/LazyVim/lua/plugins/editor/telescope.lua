@@ -1,5 +1,14 @@
 return {
   "telescope.nvim",
+  dependencies = {
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+  },
 
   opts = {
     defaults = {
@@ -17,6 +26,15 @@ return {
       lsp_references = {
         show_line = false,
         include_declaration = false,
+      },
+      lsp_implementations = {
+        show_line = false,
+      },
+      lsp_incoming_calls = {
+        show_line = false,
+      },
+      lsp_outgoing_calls = {
+        show_line = false,
       },
     },
   },

@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
 
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "php" })
+      vim.list_extend(opts.ensure_installed, { "ocaml" })
     end,
   },
   {
@@ -11,7 +11,7 @@ return {
 
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "phpactor", "php-cs-fixer" })
+      vim.list_extend(opts.ensure_installed, { "ocaml-lsp", "ocamlformat" })
     end,
   },
   {
@@ -20,7 +20,7 @@ return {
 
     opts = {
       formatters_by_ft = {
-        php = { "php_cs_fixer" },
+        ocaml = { "ocamlformat" },
       },
     },
   },

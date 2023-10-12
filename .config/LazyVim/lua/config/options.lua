@@ -1,6 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-
-vim.opt.cursorlineopt = "number"
-vim.opt.fillchars = { eob = " " }
+vim.opt.cursorlineopt = "number" -- Only highlight number column
+vim.opt.fillchars = { eob = " " } -- Hide ~ at end of buffer
+vim.opt.laststatus = 2 -- Always show statusline
