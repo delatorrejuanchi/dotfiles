@@ -6,7 +6,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
 
-  event = "VeryLazy",
+  event = "BufAdd",
 
   opts = {
     threshold = 10,
