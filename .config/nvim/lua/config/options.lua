@@ -2,4 +2,5 @@ vim.opt.cursorlineopt = "number" -- Only highlight number column
 vim.opt.fillchars = { eob = " " } -- Hide ~ at end of buffer
 vim.opt.laststatus = 2 -- Always show statusline
 
-vim.g.lsp_ignore_patterns_enabled = true -- Ignore tests in lsp references/implementations
+vim.opt.formatoptions = vim.opt.formatoptions - "r" -- Don't insert comment leader after hitting <Enter>
+vim.opt.formatoptions = vim.opt.formatoptions - "o" -- Don't insert comment leader after hitting o or O
