@@ -6,23 +6,24 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require("lazy").setup({
-  spec = {
-    {
-      "LazyVim/LazyVim",
-      import = "lazyvim.plugins",
-      opts = {
-        colorscheme = "catppuccin-macchiato",
-      },
+local spec = {
+  {
+    "LazyVim/LazyVim",
+    import = "lazyvim.plugins",
+    opts = {
+      colorscheme = { "catppuccin" },
     },
-
-    { import = "plugins.coding" },
-    { import = "plugins.editor" },
-    { import = "plugins.git" },
-    { import = "plugins.lang" },
-    { import = "plugins.notes" },
-    { import = "plugins.ui" },
   },
+
+  { import = "plugins.coding" },
+  { import = "plugins.editor" },
+  { import = "plugins.git" },
+  { import = "plugins.lang" },
+  { import = "plugins.notes" },
+  { import = "plugins.ui" },
+}
+
+require("lazy").setup(spec, {
   defaults = {
     lazy = true,
 
@@ -33,7 +34,7 @@ require("lazy").setup({
   },
   install = {
     missing = true,
-    colorscheme = { "catppuccin-macchiato" },
+    colorscheme = { "catppuccin", "tokyonight" },
   },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
@@ -51,4 +52,5 @@ require("lazy").setup({
       },
     },
   },
+  dev = { path = "~/dev/personal" },
 })

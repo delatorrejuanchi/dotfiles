@@ -22,6 +22,14 @@ return {
     },
   },
   {
+    "folke/tokyonight.nvim",
+    optional = true,
+
+    opts = {
+      transparent = true,
+    },
+  },
+  {
     "rcarriga/nvim-notify",
     optional = true,
 
