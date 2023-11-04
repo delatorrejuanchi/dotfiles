@@ -9,6 +9,6 @@ return {
   event = "BufAdd",
 
   opts = {
-    threshold = 10,
+    threshold = 5,
   },
 }

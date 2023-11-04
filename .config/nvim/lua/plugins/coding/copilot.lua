@@ -1,4 +1,4 @@
-if os.time() >= os.time({ year = 2023, month = 10, day = 27 }) then
+if vim.fn.getcwd():find("/Volumes/code/") == 1 then
   return {}
 end
 

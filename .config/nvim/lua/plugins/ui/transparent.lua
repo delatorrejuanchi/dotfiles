@@ -8,8 +8,15 @@ return {
 
       transparent.clear_prefix("lualine")
       transparent.clear_prefix("NeoTree")
+      transparent.clear_prefix("Notify")
+      transparent.clear_prefix("WhichKey")
 
-      transparent.setup()
+      transparent.setup({
+        extra_groups = {
+          "TelescopeNormal",
+          "TelescopeBorder",
+        },
+      })
     end,
   },
   {
@@ -35,6 +42,19 @@ return {
 
     opts = {
       background_colour = "#000000",
+    },
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      views = {
+        mini = {
+          win_options = {
+            winblend = 0,
+          },
+        },
+      },
     },
   },
   {

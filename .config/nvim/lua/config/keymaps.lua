@@ -6,8 +6,10 @@ vim.keymap.set("n", "L", "w", { noremap = true })
 local telescope_ignore_patterns = {
   "[^a-z]test[^a-z]",
   "[^a-z]mock[^a-z]",
+  "[^a-z]stub[^a-z]",
   "Test[^a-z]",
   "Mock[^a-z]",
+  "Stub[^a-z]",
 }
 
 vim.keymap.set("n", "<leader>uI", function()
