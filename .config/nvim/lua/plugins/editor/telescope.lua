@@ -13,7 +13,6 @@ return {
       sorting_strategy = "ascending",
     },
     pickers = {
-      -- https://github.com/hongxuchen/dotfiles/blob/302c37fc1bf6dc67f97c3c732e0c54df6da308f3/_config/nvim/lua/plug/telescope/init.lua#L40
       lsp_references = {
         show_line = false,
         include_declaration = false,

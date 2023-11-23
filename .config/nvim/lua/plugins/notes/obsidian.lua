@@ -33,7 +33,6 @@ return {
       },
 
       use_advanced_uri = true,
-      overwrite_mappings = true,
 
       completion = {
         new_notes_location = "notes_subdir",

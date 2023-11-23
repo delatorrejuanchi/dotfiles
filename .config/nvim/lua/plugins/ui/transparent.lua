@@ -6,9 +6,7 @@ return {
     config = function()
       local transparent = require("transparent")
 
-      transparent.clear_prefix("lualine")
       transparent.clear_prefix("NeoTree")
-      transparent.clear_prefix("Notify")
       transparent.clear_prefix("WhichKey")
 
       transparent.setup({
@@ -20,28 +18,11 @@ return {
     end,
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    optional = true,
-
-    opts = {
-      transparent_background = true,
-    },
-  },
-  {
     "folke/tokyonight.nvim",
     optional = true,
 
     opts = {
       transparent = true,
-    },
-  },
-  {
-    "rcarriga/nvim-notify",
-    optional = true,
-
-    opts = {
-      background_colour = "#000000",
     },
   },
   {

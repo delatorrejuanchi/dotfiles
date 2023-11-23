@@ -3,6 +3,6 @@ return {
   lazy = true,
 
   opts = {
-    style = "moon",
+    style = "storm",
   },
 }
