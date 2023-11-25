@@ -1,12 +1,11 @@
 return {
   "axkirillov/hbac.nvim",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-  },
 
   event = "VeryLazy",
+
+  keys = {
+    { "<leader>bp", "<cmd>Hbac toggle_pin<cr>", desc = "Toggle pin" },
+  },
 
   opts = {
     threshold = 10,

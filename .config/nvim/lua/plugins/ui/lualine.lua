@@ -4,6 +4,12 @@ return {
   opts = function()
     local icons = require("lazyvim.config").icons
 
+    local branch = { "branch" }
+
+    local filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } }
+
+    local filename = { "filename", path = 4, symbols = { modified = "", readonly = "", unnamed = "" } }
+
     local diagnostics = {
       "diagnostics",
       symbols = {
@@ -24,10 +30,6 @@ return {
       always_visible = true,
     }
 
-    local filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } }
-
-    local filename = { "filename", path = 1, symbols = { modified = "", readonly = "", unnamed = "" } }
-
     return {
       options = {
         component_separators = { left = "", right = "" },
@@ -36,7 +38,7 @@ return {
       sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { filetype, filename, diff, diagnostics },
+        lualine_c = { branch, filetype, filename, diff, diagnostics },
         lualine_x = {
           {
             require("noice").api.status.mode["get"],
@@ -49,7 +51,7 @@ return {
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { filetype, filename, diff, diagnostics },
+        lualine_c = { branch, filetype, filename, diff, diagnostics },
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
