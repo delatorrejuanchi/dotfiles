@@ -1,8 +1,8 @@
 return {
   "rcarriga/nvim-notify",
+  optional = true,
+
   opts = {
-    fps = 120,
     render = "compact",
-    -- level = vim.log.levels.WARN,
   },
 }

@@ -21,7 +21,7 @@ end, { noremap = true, desc = "Toggle telescope ignore patterns" })
 vim.keymap.del({ "i", "x", "n", "s" }, "<C-s>") -- Save file
 vim.keymap.del("n", "<leader>K") -- keywordprg
 
-vim.keymap.del("n", "<leader>gG") -- Lazygit (cwd)
+-- vim.keymap.del("n", "<leader>gG") -- Lazygit (cwd)
 
 vim.keymap.del("n", "<leader>ft") -- Terminal (root dir)
 vim.keymap.del("n", "<leader>fT") -- Terminal (cwd)
