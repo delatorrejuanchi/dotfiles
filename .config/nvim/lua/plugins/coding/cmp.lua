@@ -46,6 +46,8 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       }
+
+      opts.completion.keyword_length = 2
     end,
   },
 }
