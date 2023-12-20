@@ -24,6 +24,12 @@ return {
         gopls = {
           settings = {
             gopls = {
+              codelenses = {
+                gc_details = true,
+              },
+              analyses = {
+                fieldalignment = false,
+              },
               usePlaceholders = false,
             },
           },
