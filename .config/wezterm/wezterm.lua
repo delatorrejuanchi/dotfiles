@@ -13,6 +13,7 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.95
 config.macos_window_background_blur = 2
 config.hide_tab_bar_if_only_one_tab = true
+config.inactive_pane_hsb = {}
 
 config.disable_default_key_bindings = false
 config.adjust_window_size_when_changing_font_size = false
