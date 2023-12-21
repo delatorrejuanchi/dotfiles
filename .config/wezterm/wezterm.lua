@@ -19,4 +19,8 @@ config.adjust_window_size_when_changing_font_size = false
 config.allow_win32_input_mode = false
 config.window_close_confirmation = "NeverPrompt"
 
+-- smart-splits
+-- performance issues: https://github.com/mrjones2014/smart-splits.nvim/issues/134
+config.keys = require("smart-splits").keys
+
 return config
