@@ -6,11 +6,6 @@ local function is_vim(pane)
 end
 
 local direction_keys = {
-	Left = "h",
-	Down = "j",
-	Up = "k",
-	Right = "l",
-	-- reverse lookup
 	h = "Left",
 	j = "Down",
 	k = "Up",
