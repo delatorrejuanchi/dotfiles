@@ -10,8 +10,8 @@ config.font = wezterm.font("SFMono Nerd Font")
 config.font_size = 12
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.95
-config.macos_window_background_blur = 2
+-- config.window_background_opacity = 0.95
+-- config.macos_window_background_blur = 2
 config.hide_tab_bar_if_only_one_tab = true
 config.inactive_pane_hsb = {}
 
