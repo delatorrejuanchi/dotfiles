@@ -15,7 +15,7 @@ config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.inactive_pane_hsb = {}
 
-config.disable_default_key_bindings = false
+-- config.disable_default_key_bindings = true
 config.adjust_window_size_when_changing_font_size = false
 config.allow_win32_input_mode = false
 config.window_close_confirmation = "NeverPrompt"
