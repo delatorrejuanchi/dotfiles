@@ -1,4 +1,6 @@
 local wezterm = require("wezterm")
+local neovim = require("neovim")
+local util = require("util")
 
 local config = {}
 if wezterm.config_builder then
@@ -12,6 +14,8 @@ config.font_size = 12
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- performance issues: https://github.com/wez/wezterm/issues/2669
 -- config.window_background_opacity = 0.95
 -- config.macos_window_background_blur = 2
+config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.inactive_pane_hsb = {}
 
@@ -20,8 +24,16 @@ config.adjust_window_size_when_changing_font_size = false
 config.allow_win32_input_mode = false
 config.window_close_confirmation = "NeverPrompt"
 
--- smart-splits
--- performance issues: https://github.com/mrjones2014/smart-splits.nvim/issues/134
-config.keys = require("smart-splits").keys
+config.keys = {
+	neovim.forward_or_default("h", "CTRL", util.focus_relative_fn("Left")),
+	neovim.forward_or_default("j", "CTRL", util.focus_relative_fn("Down")),
+	neovim.forward_or_default("k", "CTRL", util.focus_relative_fn("Up")),
+	neovim.forward_or_default("l", "CTRL", util.focus_relative_fn("Right")),
+
+	neovim.forward_or_default("h", "CTRL|META", util.resize_relative_fn("Left")),
+	neovim.forward_or_default("j", "CTRL|META", util.resize_relative_fn("Down")),
+	neovim.forward_or_default("k", "CTRL|META", util.resize_relative_fn("Up")),
+	neovim.forward_or_default("l", "CTRL|META", util.resize_relative_fn("Right")),
+}
 
 return config
