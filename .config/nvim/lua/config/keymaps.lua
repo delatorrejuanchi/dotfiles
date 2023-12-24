@@ -9,6 +9,10 @@ vim.keymap.set({ "i", "n" }, "<C-M-h>", require("smart-splits").resize_left)
 vim.keymap.set({ "i", "n" }, "<C-M-j>", require("smart-splits").resize_down)
 vim.keymap.set({ "i", "n" }, "<C-M-k>", require("smart-splits").resize_up)
 vim.keymap.set({ "i", "n" }, "<C-M-l>", require("smart-splits").resize_right)
+vim.keymap.set({ "i", "n" }, "<C-S-h>", require("smart-splits").swap_buf_left)
+vim.keymap.set({ "i", "n" }, "<C-S-j>", require("smart-splits").swap_buf_down)
+vim.keymap.set({ "i", "n" }, "<C-S-k>", require("smart-splits").swap_buf_up)
+vim.keymap.set({ "i", "n" }, "<C-S-l>", require("smart-splits").swap_buf_right)
 
 -- Telescope ignore patterns
 local telescope_ignore_patterns = {
