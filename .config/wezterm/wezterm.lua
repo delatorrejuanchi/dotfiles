@@ -2,6 +2,8 @@ local wezterm = require("wezterm")
 local neovim = require("neovim")
 local util = require("util")
 
+local workspace = require("workspace")
+
 local config = {}
 if wezterm.config_builder then
 	config = wezterm.config_builder()
@@ -34,6 +36,9 @@ config.keys = {
 	neovim.forward_or_default("j", "CTRL|META", util.resize_relative_fn("Down")),
 	neovim.forward_or_default("k", "CTRL|META", util.resize_relative_fn("Up")),
 	neovim.forward_or_default("l", "CTRL|META", util.resize_relative_fn("Right")),
+
+	{ key = "s", mods = "CTRL", action = workspace.build_switcher("Switch to workspace:") },
+	{ key = "v", mods = "CTRL", action = workspace.build_switcher("Switch to workspace in Neovim:", { "nvim" }) },
 }
 
 return config
