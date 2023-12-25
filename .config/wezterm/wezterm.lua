@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local neovim = require("neovim")
 local util = require("util")
-
 local workspace = require("workspace")
 
 local config = {}
@@ -36,8 +35,16 @@ config.keys = {
 	neovim.forward_or_default("k", "CTRL|META", util.resize_relative_fn("Up")),
 	neovim.forward_or_default("l", "CTRL|META", util.resize_relative_fn("Right")),
 
-	{ key = "s", mods = "CTRL", action = workspace.build_switcher("Switch to workspace:") },
-	{ key = "v", mods = "CTRL", action = workspace.build_switcher("Switch to workspace in Neovim:", { "nvim" }) },
+	{ key = "s", mods = "CTRL", action = workspace.open_switcher("Switch to workspace:") },
+	{ key = "v", mods = "CTRL", action = workspace.open_switcher("Switch to workspace in Neovim:", { "nvim" }) },
+	{ key = "f", mods = "META", action = workspace.switch_by_index(1) },
+	{ key = "d", mods = "META", action = workspace.switch_by_index(2) },
+	{ key = "s", mods = "META", action = workspace.switch_by_index(3) },
+	{ key = "a", mods = "META", action = workspace.switch_by_index(4) },
 }
+
+wezterm.on("update-right-status", function(window, _)
+	window:set_right_status(window:active_workspace())
+end)
 
 return config

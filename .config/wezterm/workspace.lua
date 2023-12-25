@@ -5,8 +5,9 @@ local zoxide_path = "zoxide"
 
 ---@param workspace string
 ---@return string
-local function get_workspace_label(workspace)
-	return wezterm.format({ { Text = "󱂬: " .. workspace } })
+---@param index number
+local function get_workspace_label(workspace, index)
+	return wezterm.format({ { Text = "󱂬  " .. workspace .. " (" .. index .. ")" } })
 end
 
 ---@param args string[]
@@ -65,16 +66,16 @@ end
 
 ---@param title string
 ---@param spawn_args string[]?
-local function build_switcher(title, spawn_args)
+local function open_switcher(title, spawn_args)
 	return wezterm.action_callback(function(win, pane)
 		local workspaces = wezterm.mux.get_workspace_names()
 		local zoxide_dirs = get_zoxide_dirs()
 
 		local choices = {}
-		for _, workspace in ipairs(workspaces) do
+		for i, workspace in ipairs(workspaces) do
 			table.insert(choices, {
 				id = "workspace_" .. workspace,
-				label = get_workspace_label(workspace),
+				label = get_workspace_label(workspace, #workspaces - i + 1),
 			})
 		end
 
@@ -89,6 +90,20 @@ local function build_switcher(title, spawn_args)
 	end)
 end
 
+---@param index number
+local function switch_by_index(index)
+	return wezterm.action_callback(function(win, pane)
+		local workspaces = wezterm.mux.get_workspace_names()
+		local workspace = workspaces[#workspaces - index + 1]
+		if not workspace then
+			return
+		end
+
+		win:perform_action(wezterm.action.SwitchToWorkspace({ name = workspace }), pane)
+	end)
+end
+
 return {
-	build_switcher = build_switcher,
+	open_switcher = open_switcher,
+	switch_by_index = switch_by_index,
 }
