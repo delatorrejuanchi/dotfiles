@@ -8,7 +8,7 @@ return {
   opts = {
     suggestion = {
       enabled = true,
-      auto_trigger = vim.fn.getcwd():find("/Volumes/code/") ~= 1,
+      auto_trigger = true,
     },
     panel = { enabled = false },
     filetypes = {
