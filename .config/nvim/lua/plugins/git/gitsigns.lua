@@ -3,6 +3,8 @@ return {
 
   opts = {
     numhl = true,
+    current_line_blame = true,
+
     yadm = { enable = true },
   },
 }
