@@ -18,6 +18,36 @@ return {
     },
   },
   {
+    "stevearc/conform.nvim",
+
+    opts = {
+      formatters_by_ft = {
+        go = { "goimports", "gofumpt", "gci", "golines" },
+      },
+
+      formatters = {
+        gci = {
+          command = "gci",
+          stdin = false,
+          args = {
+            "write",
+            "--skip-generated",
+            "--section=standard",
+            "--section=localmodule",
+            "--section=Prefix(github.com/PaddleHQ)",
+            "--section=default",
+            "--custom-order",
+            "$FILENAME",
+          },
+        },
+
+        golines = {
+          prepend_args = { "-m", "140", "--no-reformat-tags" },
+        },
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
