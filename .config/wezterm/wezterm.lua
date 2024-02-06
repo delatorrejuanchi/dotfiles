@@ -13,16 +13,15 @@ config.font = wezterm.font("SFMono Nerd Font")
 config.font_size = 12
 
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- performance issues: https://github.com/wez/wezterm/issues/2669
--- config.window_background_opacity = 0.95
--- config.macos_window_background_blur = 2
-config.use_fancy_tab_bar = false
-config.show_new_tab_button_in_tab_bar = false
+config.enable_tab_bar = false
 config.inactive_pane_hsb = {}
 
 -- config.disable_default_key_bindings = true
 config.adjust_window_size_when_changing_font_size = false
 config.allow_win32_input_mode = false
 config.window_close_confirmation = "NeverPrompt"
+
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
 	neovim.forward_or_default("h", "CTRL", util.focus_relative_fn("Left")),
@@ -35,6 +34,10 @@ config.keys = {
 	neovim.forward_or_default("k", "CTRL|META", util.resize_relative_fn("Up")),
 	neovim.forward_or_default("l", "CTRL|META", util.resize_relative_fn("Right")),
 
+	{ key = "|", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "f", mods = "CTRL", action = wezterm.action.TogglePaneZoomState },
+
 	{ key = "s", mods = "CTRL", action = workspace.open_switcher("Switch to workspace:") },
 	{ key = "v", mods = "CTRL", action = workspace.open_switcher("Switch to workspace in Neovim:", { "nvim" }) },
 	{ key = "f", mods = "META", action = workspace.switch_by_index(1) },
@@ -43,8 +46,5 @@ config.keys = {
 	{ key = "a", mods = "META", action = workspace.switch_by_index(4) },
 }
 
-wezterm.on("update-right-status", function(window, _)
-	window:set_right_status(window:active_workspace())
-end)
 
 return config
