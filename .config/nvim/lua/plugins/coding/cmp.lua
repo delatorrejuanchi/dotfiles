@@ -49,5 +49,18 @@ return {
 
       opts.completion.keyword_length = 2
     end,
+
+    ---@param opts cmp.ConfigSchema
+    config = function(_, opts)
+      for _, source in ipairs(opts.sources) do
+        source.group_index = source.group_index or 1
+
+        if source.name ~= "luasnip" then
+          source.group_index = source.group_index + 1
+        end
+      end
+
+      require("cmp").setup(opts)
+    end,
   },
 }
