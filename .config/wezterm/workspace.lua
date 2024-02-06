@@ -29,49 +29,12 @@ local function get_zoxide_dirs()
 end
 
 ---@param title string
----@param choices { id: string, label: string }[]
----@param spawn_args string[]?
-local function build_switcher_input_selector(title, choices, spawn_args)
-	return wezterm.action.InputSelector({
-		title = title,
-		choices = choices,
-		fuzzy = true,
-		action = wezterm.action_callback(function(win, pane, id, label)
-			if not id or not label then
-				return
-			end
-
-			local workspace = string.match(id, "^workspace_(.+)$")
-			if workspace then
-				win:perform_action(wezterm.action.SwitchToWorkspace({ name = workspace }), pane)
-				return
-			end
-
-			win:perform_action(
-				wezterm.action.SwitchToWorkspace({
-					name = id,
-					spawn = {
-						label = label,
-						cwd = id,
-						args = spawn_args and { os.getenv("SHELL"), "-cli", table.concat(spawn_args, " ") },
-					},
-				}),
-				pane
-			)
-
-			run_child_process({ "zoxide", "add", id })
-		end),
-	})
-end
-
----@param title string
 ---@param spawn_args string[]?
 local function open_switcher(title, spawn_args)
 	return wezterm.action_callback(function(win, pane)
-		local workspaces = wezterm.mux.get_workspace_names()
-		local zoxide_dirs = get_zoxide_dirs()
-
 		local choices = {}
+
+		local workspaces = wezterm.mux.get_workspace_names()
 		for i, workspace in ipairs(workspaces) do
 			table.insert(choices, {
 				id = "workspace_" .. workspace,
@@ -79,6 +42,7 @@ local function open_switcher(title, spawn_args)
 			})
 		end
 
+		local zoxide_dirs = get_zoxide_dirs()
 		for _, dir in ipairs(zoxide_dirs) do
 			table.insert(choices, {
 				id = dir,
@@ -86,7 +50,39 @@ local function open_switcher(title, spawn_args)
 			})
 		end
 
-		win:perform_action(build_switcher_input_selector(title, choices, spawn_args), pane)
+		win:perform_action(
+			wezterm.action.InputSelector({
+				title = title,
+				choices = choices,
+				fuzzy = true,
+				action = wezterm.action_callback(function(_, _, id, label)
+					if not id or not label then
+						return
+					end
+
+					local workspace = string.match(id, "^workspace_(.+)$")
+					if workspace then
+						win:perform_action(wezterm.action.SwitchToWorkspace({ name = workspace }), pane)
+						return
+					end
+
+					win:perform_action(
+						wezterm.action.SwitchToWorkspace({
+							name = id,
+							spawn = {
+								label = label,
+								cwd = id,
+								args = spawn_args and { os.getenv("SHELL"), "-cli", table.concat(spawn_args, " ") },
+							},
+						}),
+						pane
+					)
+
+					run_child_process({ "zoxide", "add", id })
+				end),
+			}),
+			pane
+		)
 	end)
 end
 

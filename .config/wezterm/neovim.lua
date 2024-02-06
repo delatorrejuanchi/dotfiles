@@ -1,7 +1,9 @@
 local wezterm = require("wezterm")
 
 local function is_nvim(pane)
-	return pane:get_user_vars().IS_NVIM == "true" -- NOTE: IS_NVIM is managed by the mrjones2014/smart-splits.nvim plugin
+	local user_vars = pane.user_vars or pane:get_user_vars()
+
+	return user_vars.IS_NVIM == "true" -- NOTE: IS_NVIM is managed by the mrjones2014/smart-splits.nvim plugin
 end
 
 local function forward_or_default(key, mods, default_callback)
