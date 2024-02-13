@@ -78,7 +78,7 @@ local function open_switcher(title, spawn_args)
 						pane
 					)
 
-					run_child_process({ "zoxide", "add", id })
+					run_child_process({ zoxide_path, "add", id })
 				end),
 			}),
 			pane
