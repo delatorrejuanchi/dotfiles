@@ -1,0 +1,33 @@
+# open wezterm
+ctrl + cmd - t : wezterm cli spawn --new-window
+
+# move between windows
+ctrl + cmd - left : yabai -m window --focus west  || yabai -m display --focus west
+ctrl + cmd - down : yabai -m window --focus south || yabai -m display --focus south
+ctrl + cmd - up : yabai -m window --focus north || yabai -m display --focus north
+ctrl + cmd - right : yabai -m window --focus east  || yabai -m display --focus east
+
+# move window to most recent display and focus
+ctrl + cmd - d: yabai -m query --windows --window \
+              | jq -re ".id" \
+              | xargs -I{} sh -c 'yabai -m window {} --display recent; yabai -m window --focus {}'
+
+# toggle zoom
+ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
+
+# balance windows
+ctrl + cmd - b : yabai -m space --balance
+
+# toggle layout mode for the current space
+ctrl + cmd - y : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "stack" else "bsp" end')
+
+# toggle horizontal/vertical split
+ctrl + cmd - s : yabai -m window --toggle split
+
+# cycle between non-minimized windows
+ctrl + cmd - 0x32 : yabai -m query --spaces --space \
+                  | jq -re ".index" \
+                  | xargs -I{} yabai -m query --windows --space {} \
+                  | jq -sre 'add | map(select(."is-minimized"==false)) | sort_by(.display, .frame.y, .frame.x, .id) | . as $array | length as $array_length | index(map(select(."has-focus"==true))) as $has_index | if $has_index > 0 then nth($has_index - 1).id else nth($array_length - 1).id end' \
+                  | xargs -I{} yabai -m window --focus {}
+
