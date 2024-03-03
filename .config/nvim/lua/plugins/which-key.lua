@@ -11,4 +11,11 @@ return {
       ["<leader>"] = { name = "+leader" },
     },
   },
+
+  config = function(_, opts)
+    local which_key = require("which-key")
+
+    which_key.setup(opts)
+    which_key.register(opts.defaults)
+  end,
 }
