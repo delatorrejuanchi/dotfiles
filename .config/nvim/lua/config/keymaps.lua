@@ -1,55 +1,48 @@
-local Util = require("lazy.core.util")
+-- lazy
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
 
--- smart-split navigation
-vim.keymap.set({ "i", "n" }, "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set({ "i", "n" }, "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set({ "i", "n" }, "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set({ "i", "n" }, "<C-l>", require("smart-splits").move_cursor_right)
-vim.keymap.set({ "i", "n" }, "<C-M-h>", require("smart-splits").resize_left)
-vim.keymap.set({ "i", "n" }, "<C-M-j>", require("smart-splits").resize_down)
-vim.keymap.set({ "i", "n" }, "<C-M-k>", require("smart-splits").resize_up)
-vim.keymap.set({ "i", "n" }, "<C-M-l>", require("smart-splits").resize_right)
-vim.keymap.set({ "i", "n" }, "<C-S-h>", require("smart-splits").swap_buf_left)
-vim.keymap.set({ "i", "n" }, "<C-S-j>", require("smart-splits").swap_buf_down)
-vim.keymap.set({ "i", "n" }, "<C-S-k>", require("smart-splits").swap_buf_up)
-vim.keymap.set({ "i", "n" }, "<C-S-l>", require("smart-splits").swap_buf_right)
+-- better up/down
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count? 'k' : 'gk'", { expr = true, desc = "up" })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count? 'j' : 'gj'", { expr = true, desc = "down" })
 
--- Telescope ignore patterns
-local telescope_ignore_patterns = {
-  "[^a-z]test[^a-z]",
-  "[^a-z]mock[^a-z]",
-  "Test[^a-z]",
-  "Mock[^a-z]",
-}
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-vim.keymap.set("n", "<leader>uI", function()
-  vim.g.telescope_ignore_enabled = not vim.g.telescope_ignore_enabled
-  Util.info("Telescope ignore patterns: " .. (vim.g.telescope_ignore_enabled and "enabled" or "disabled"))
+-- move lines up/down
+vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { desc = "move line up" })
+vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "move line up" })
+vim.keymap.set("i", "<A-Up>", "<esc>:m .-2<CR>==gi", { desc = "move line up" })
+vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { desc = "move line down" })
+vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "move line down" })
+vim.keymap.set("i", "<A-Down>", "<esc>:m .+1<CR>==gi", { desc = "move line down" })
 
-  require("telescope.config").set_defaults({
-    file_ignore_patterns = vim.g.telescope_ignore_enabled and telescope_ignore_patterns or {},
-  })
-end, { noremap = true, desc = "Toggle telescope ignore patterns" })
+-- splits
+vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "split window horizontally" })
+vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "split window vertically" })
 
--- Disable unused keymaps
-vim.keymap.del({ "i", "x", "n", "s" }, "<C-s>") -- Save file
-vim.keymap.del("n", "<leader>K") -- keywordprg
+-- buffer navigation
+vim.keymap.set("n", "<leader>,", "<cmd>e #<CR>", { desc = "switch to last buffer" })
 
--- vim.keymap.del("n", "<leader>gG") -- Lazygit (cwd)
+-- clear search with escape
+vim.keymap.set("n", "<esc>", "<cmd>noh<CR><esc>", { silent = true })
 
-vim.keymap.del("n", "<leader>ft") -- Terminal (root dir)
-vim.keymap.del("n", "<leader>fT") -- Terminal (cwd)
-vim.keymap.del("n", "<C-/>") -- Terminal (root dir)
-vim.keymap.del("n", "<C-_>") -- which-key
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+vim.keymap.set("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "next search result" })
+vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "next search result" })
+vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "next search result" })
+vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "prev search result" })
+vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
+vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
 
-vim.keymap.del("n", "<leader>ww") -- Other window
-vim.keymap.del("n", "<leader>wd") -- Delete window
-vim.keymap.del("n", "<leader>w-") -- Split window below
-vim.keymap.del("n", "<leader>w|") -- Split window right
+-- next/prev
+vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "next quickfix" })
+vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "prev quickfix" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic" })
 
-vim.keymap.del("n", "<leader><tab>l") -- Last Tab
-vim.keymap.del("n", "<leader><tab>f") -- First Tab
-vim.keymap.del("n", "<leader><tab><tab>") -- New Tab
-vim.keymap.del("n", "<leader><tab>]") -- Next Tab
-vim.keymap.del("n", "<leader><tab>d") -- Close Tab
-vim.keymap.del("n", "<leader><tab>[") -- Previous Tab
+-- goto
+vim.keymap.set("n", "g.", "gi", { desc = "goto last insertion and insert" })
+
+-- quit
+vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "quit" })

@@ -1,48 +1,58 @@
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 local spec = {
   {
-    "LazyVim/LazyVim",
-    import = "lazyvim.plugins",
-    opts = {
-      colorscheme = { "tokyonight" },
-    },
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+
+      vim.cmd([[colorscheme tokyonight]])
+    end,
   },
 
-  { import = "plugins.coding" },
-  { import = "plugins.editor" },
-  { import = "plugins.git" },
-  { import = "plugins.lang" },
-  { import = "plugins.notes" },
-  { import = "plugins.ui" },
+  { import = "plugins" },
+  { import = "plugins.lang.lua" },
+  { import = "plugins.lang.haskell" },
+  { import = "plugins.lang.go" },
+  { import = "plugins.lang.json" },
+
+  { import = "plugins.extras.indent-guides" },
+  { import = "plugins.extras.testing" },
+  { import = "plugins.extras.transparency" },
 }
 
 require("lazy").setup(spec, {
   defaults = {
     lazy = true,
-
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
+    version = false,
   },
   install = {
-    missing = true,
     colorscheme = { "tokyonight" },
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
       disabled_plugins = {
         "gzip",
         "netrw",
         "netrwPlugin",
+        "rplugin",
         "tar",
         "tarPlugin",
         "tohtml",
@@ -52,5 +62,4 @@ require("lazy").setup(spec, {
       },
     },
   },
-  dev = { path = "~/dev/personal" },
 })

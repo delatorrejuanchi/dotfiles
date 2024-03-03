@@ -1,15 +1,58 @@
-return {
-  { import = "lazyvim.plugins.extras.lang.go" },
-  {
-    "williamboman/mason.nvim",
+local util = require("util")
 
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "golangci-lint" })
+return {
+  {
+    "neovim/nvim-lspconfig",
+    optional = true,
+
+    init = function()
+      -- workaround for gopls not supporting semanticTokensProvider (ref: https://github.com/golang/go/issues/54531#issuecomment-1464982242)
+      util.lsp_on_attach(function(client, _)
+        if not client.name == "gopls" then
+          return
+        end
+
+        if not client.server_capabilities.semanticTokensProvider then
+          client.server_capabilities.semanticTokensProvider = {
+            full = true,
+            legend = {
+              tokenTypes = client.config.capabilities.textDocument.semanticTokens.tokenTypes,
+              tokenModifiers = client.config.capabilities.textDocument.semanticTokens.tokenModifiers,
+            },
+            range = true,
+          }
+        end
+      end)
     end,
+
+    opts = {
+      servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = { fieldalignment = false },
+            },
+
+            staticcheck = true,
+            semanticTokens = true,
+          },
+        },
+      },
+    },
   },
   {
     "mfussenegger/nvim-lint",
+    optional = true,
+
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+
+        opts = function(_, opts)
+          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "golangci-lint" })
+        end,
+      },
+    },
 
     opts = {
       linters_by_ft = {
@@ -19,16 +62,26 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    optional = true,
+
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+
+        opts = function(_, opts)
+          opts.ensure_installed =
+            vim.list_extend(opts.ensure_installed or {}, { "gci", "goimports", "golines", "gofumpt" })
+        end,
+      },
+    },
 
     opts = {
       formatters_by_ft = {
-        go = { "goimports", "gofumpt", "gci", "golines" },
+        go = { "gci", "goimports", "golines", "gofumpt" },
       },
 
       formatters = {
         gci = {
-          command = "gci",
-          stdin = false,
           args = {
             "write",
             "--skip-generated",
@@ -42,29 +95,34 @@ return {
         },
 
         golines = {
-          prepend_args = { "-m", "140", "--no-reformat-tags" },
+          prepend_args = { "-m", "141", "--no-reformat-tags" },
         },
       },
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        gopls = {
-          settings = {
-            gopls = {
-              codelenses = {
-                gc_details = true,
-              },
-              analyses = {
-                fieldalignment = false,
-              },
-              usePlaceholders = false,
-            },
-          },
-        },
+    "nvim-neotest/neotest",
+    optional = true,
+
+    dependencies = { "nvim-neotest/neotest-go" },
+
+    opts = function(_, opts)
+      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-go") })
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+
+    dependencies = {
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+
+        opts = function(_, opts)
+          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "delve" })
+        end,
       },
+      { "leoluz/nvim-dap-go", opts = {} },
     },
   },
 }

@@ -1,18 +1,25 @@
 return {
-  { import = "lazyvim.plugins.extras.lang.json" },
   {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, "prettierd")
-    end,
-  },
-  {
-    "stevearc/conform.nvim",
+    "neovim/nvim-lspconfig",
+    optional = true,
+
+    dependencies = { "b0o/SchemaStore.nvim" },
 
     opts = {
-      formatters_by_ft = {
-        ["json"] = { "prettierd" },
-        ["jsonc"] = { "prettierd" },
+      servers = {
+        jsonls = {
+          on_new_config = function(new_config)
+            new_config.settings.json.schemas =
+              vim.list_extend(new_config.settings.json.schemas or {}, require("schemastore").json.schemas())
+          end,
+
+          settings = {
+            json = {
+              format = { enable = true },
+              validate = { enable = true },
+            },
+          },
+        },
       },
     },
   },
