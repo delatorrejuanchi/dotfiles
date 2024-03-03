@@ -22,26 +22,6 @@ return {
     },
   },
   {
-    "mfussenegger/nvim-lint",
-    optional = true,
-
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-
-        opts = function(_, opts)
-          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "luacheck" })
-        end,
-      },
-    },
-
-    opts = {
-      linters_by_ft = {
-        lua = { "luacheck" },
-      },
-    },
-  },
-  {
     "stevearc/conform.nvim",
     optional = true,
 
