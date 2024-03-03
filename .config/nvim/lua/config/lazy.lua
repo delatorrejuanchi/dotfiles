@@ -28,6 +28,8 @@ local spec = {
   },
 
   { import = "plugins" },
+
+  { import = "plugins.lang.c" },
   { import = "plugins.lang.lua" },
   { import = "plugins.lang.haskell" },
   { import = "plugins.lang.go" },
