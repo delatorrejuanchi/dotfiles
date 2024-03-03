@@ -26,6 +26,8 @@ return {
     },
   },
 
+  cmd = { "Telescope" },
+
   keys = {
     {
       "<leader><space>",
