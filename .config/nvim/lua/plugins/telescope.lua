@@ -40,6 +40,7 @@ return {
       end,
       desc = "find files",
     },
+    { "<leader>.", "<cmd>Telescope buffers<CR>", desc = "buffers" },
     { "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "live grep" },
 
     { "<leader>sh", "<cmd>Telescope help_tags<CR>", desc = "help tags" },
