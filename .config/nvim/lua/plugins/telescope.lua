@@ -31,10 +31,8 @@ return {
       "<leader><space>",
       function()
         if vim.uv.fs_stat(vim.uv.cwd() .. "/.git") then
-          vim.cmd("Telescope git_files")
           require("telescope.builtin").git_files()
         else
-          vim.cmd("Telescope find_files")
           require("telescope.builtin").find_files()
         end
       end,
