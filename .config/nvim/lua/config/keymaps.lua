@@ -43,6 +43,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic" }
 
 -- goto
 vim.keymap.set("n", "g.", "gi", { desc = "goto last insertion and insert" })
+vim.keymap.set("n", "g,", "gv", { desc = "goto last visual selection" })
 
 -- quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "quit" })
