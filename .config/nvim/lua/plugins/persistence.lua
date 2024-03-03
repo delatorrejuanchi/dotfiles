@@ -1,10 +1,6 @@
 return {
   "folke/persistence.nvim",
 
-  opts = {
-    options = vim.opt.sessionoptions:get(),
-  },
-
   init = function()
     local function load()
       if vim.fn.argc(-1) > 0 then
@@ -41,4 +37,8 @@ return {
       end,
     })
   end,
+
+  opts = {
+    options = vim.opt.sessionoptions:get(),
+  },
 }
