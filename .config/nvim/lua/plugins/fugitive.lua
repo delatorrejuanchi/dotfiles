@@ -4,7 +4,7 @@ return {
     dependencies = {
       { "tpope/vim-rhubarb" },
       {
-        "folke/which-key",
+        "folke/which-key.nvim",
         optional = true,
 
         opts = {
