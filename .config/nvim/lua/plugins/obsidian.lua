@@ -63,6 +63,8 @@ return {
 
       picker = { name = "telescope.nvim" },
 
+      ui = { enable = false },
+
       note_id_func = function(title)
         -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
         -- In this case a note with the title 'My new note' will given an ID that looks
