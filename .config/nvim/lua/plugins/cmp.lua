@@ -59,8 +59,9 @@ return {
       {
         "neovim/nvim-lspconfig",
 
-        opts = function()
-          return { capabilities = require("cmp_nvim_lsp").default_capabilities() }
+        opts = function(_, opts)
+          opts.capabilities =
+            vim.tbl_deep_extend("force", opts.capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
         end,
       },
     },

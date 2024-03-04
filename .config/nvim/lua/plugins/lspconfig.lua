@@ -26,6 +26,8 @@ return {
     },
 
     config = function(_, opts)
+      opts.capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), opts.capabilities or {})
+
       local function setup(server)
         local server_opts = opts.servers and opts.servers[server] or {}
         if opts.capabilities then

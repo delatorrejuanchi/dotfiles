@@ -35,6 +35,7 @@ local spec = {
   { import = "plugins.lang.go" },
   { import = "plugins.lang.json" },
   { import = "plugins.lang.markdown" },
+  { import = "plugins.lang.yaml" },
 
   { import = "plugins.extras.indent-guides" },
   { import = "plugins.extras.testing" },
