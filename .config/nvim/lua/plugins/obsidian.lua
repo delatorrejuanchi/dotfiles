@@ -52,7 +52,7 @@ return {
     opts = {
       workspaces = {
         { name = workspace_personal, path = vault .. "/" .. workspace_personal, strict = true },
-        { name = workspace_personal, path = vault .. "/" .. workspace_work, strict = true },
+        { name = workspace_work, path = vault .. "/" .. workspace_work, strict = true },
       },
 
       daily_notes = { folder = "journal" },
