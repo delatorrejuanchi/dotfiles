@@ -8,7 +8,7 @@ return {
     init = function()
       -- workaround for gopls not supporting semanticTokensProvider (ref: https://github.com/golang/go/issues/54531#issuecomment-1464982242)
       util.lsp_on_attach(function(client, _)
-        if not client.name == "gopls" then
+        if client.name ~= "gopls" then
           return
         end
 
