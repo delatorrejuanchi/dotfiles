@@ -107,7 +107,8 @@ return {
 
     config = function(_, opts)
       local primary_workspace = workspace_personal
-      if vim.fn.getcwd():find(vim.fn.expand("~") .. "/code", 1, true) then
+
+      if vim.fn.getcwd():find(vim.fn.expand("~") .. "/code", 1, true) or vim.fn.getcwd():find("/Volumes/code", 1, true) then
         primary_workspace = workspace_work
       end
 
