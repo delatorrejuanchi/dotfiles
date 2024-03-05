@@ -16,7 +16,8 @@ return {
     },
 
     keys = {
-      { "<leader>gy", ":silent GBrowse!<CR>", mode = { "n", "v" }, desc = "yank permalink" },
+      { "<leader>gy", "<cmd>GBrowse!<CR>", mode = { "n" }, desc = "yank permalink" },
+      { "<leader>gy", "<esc><cmd>'<,'>GBrowse!<CR>", mode = { "v" }, desc = "yank permalink" },
     },
   },
 }
