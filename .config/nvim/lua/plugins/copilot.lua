@@ -3,7 +3,7 @@ return {
   build = ":Copilot auth",
 
   cmd = "Copilot",
-  event = "BufEnter",
+  event = "InsertEnter",
 
   opts = {
     panel = { enabled = false },
