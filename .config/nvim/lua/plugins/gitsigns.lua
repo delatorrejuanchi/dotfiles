@@ -19,9 +19,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
 
     opts = {
-      numhl = true,
-      current_line_blame = true,
-
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
@@ -46,6 +43,7 @@ return {
         map("n", "<leader>ghs", gitsigns.stage_hunk, "stage hunk")
         map("n", "<leader>ghu", gitsigns.undo_stage_hunk, "undo stage hunk")
         map("n", "<leader>ghr", gitsigns.reset_hunk, "reset hunk")
+        map("n", "<leader>ghp", gitsigns.preview_hunk, "preview hunk")
 
         map("n", "<leader>gtd", gitsigns.toggle_deleted, "toggle deleted")
         map("n", "<leader>gtw", gitsigns.toggle_word_diff, "toggle word diff")
