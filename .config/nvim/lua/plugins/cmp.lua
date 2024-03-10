@@ -16,27 +16,10 @@ return {
         preselect = cmp.PreselectMode.None,
 
         mapping = cmp.mapping.preset.insert({
-          ["<Down>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<Up>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
+          ["<Down>"] = { i = cmp.mapping.select_next_item() },
+          ["<Up>"] = { i = cmp.mapping.select_prev_item() },
+          ["<CR>"] = { i = cmp.mapping.confirm({ select = false }) },
+          ["<Tab>"] = { i = cmp.mapping.confirm({ select = true }) },
         }),
 
         snippet = {
@@ -60,8 +43,7 @@ return {
         "neovim/nvim-lspconfig",
 
         opts = function(_, opts)
-          opts.capabilities =
-            vim.tbl_deep_extend("force", opts.capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
+          opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
         end,
       },
     },
