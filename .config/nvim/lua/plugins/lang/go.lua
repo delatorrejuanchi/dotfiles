@@ -31,6 +31,7 @@ return {
           settings = {
             gopls = {
               analyses = { fieldalignment = false },
+              hints = { parameterNames = true },
             },
 
             staticcheck = true,
@@ -49,7 +50,8 @@ return {
         "williamboman/mason.nvim",
 
         opts = function(_, opts)
-          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "golangci-lint" })
+          -- TODO: add golangci-lint to ensure_installed after when >v1.56.2 is released
+          -- opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "golangci-lint" })
         end,
       },
     },
@@ -69,8 +71,7 @@ return {
         "williamboman/mason.nvim",
 
         opts = function(_, opts)
-          opts.ensure_installed =
-            vim.list_extend(opts.ensure_installed or {}, { "gci", "goimports", "golines", "gofumpt" })
+          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "gci", "goimports", "golines", "gofumpt" })
         end,
       },
     },
@@ -107,6 +108,9 @@ return {
     dependencies = { "nvim-neotest/neotest-go" },
 
     opts = function(_, opts)
+      local neotest_go = require("neotest-go")
+      neotest_go({ recursive_run = true })
+
       opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-go") })
     end,
   },
