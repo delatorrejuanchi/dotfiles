@@ -6,9 +6,6 @@ return {
     opts = {
       servers = {
         clangd = {
-          capabilities = {
-            offsetEncoding = { "utf-16" },
-          },
           cmd = {
             "clangd",
             "--background-index",
