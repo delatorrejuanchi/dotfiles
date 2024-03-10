@@ -1,5 +1,3 @@
-local util = require("util")
-
 return {
   {
     "xiyaowong/nvim-transparent",
@@ -7,6 +5,15 @@ return {
     event = "VeryLazy",
 
     opts = {},
+
+    config = function(_, opts)
+      local transparent = require("transparent")
+
+      transparent.setup(opts)
+
+      transparent.clear_prefix("WhichKey")
+      transparent.clear_prefix("Trouble")
+    end,
   },
   {
     "folke/tokyonight.nvim",
@@ -52,10 +59,28 @@ return {
     "folke/which-key.nvim",
     optional = true,
 
-    init = function()
-      util.on_load("which-key.nvim", function()
-        require("transparent").clear_prefix("WhichKey")
-      end)
-    end,
+    dependencies = {
+      {
+        "xiyaowong/nvim-transparent",
+
+        opts = function()
+          require("transparent").clear_prefix("WhichKey")
+        end,
+      },
+    },
+  },
+  {
+    "folke/nvim.nvim",
+    optional = true,
+
+    dependencies = {
+      {
+        "xiyaowong/nvim-transparent",
+
+        opts = function()
+          require("transparent").clear_prefix("Trouble")
+        end,
+      },
+    },
   },
 }
