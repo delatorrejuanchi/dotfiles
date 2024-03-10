@@ -11,7 +11,7 @@ return {
       local names = lint._resolve_linter_by_ft(vim.bo.filetype)
 
       names = vim.tbl_filter(function(name)
-        return lint.linters[name]
+        return lint.linters[name] ~= nil
       end, names)
 
       if #names > 0 then
