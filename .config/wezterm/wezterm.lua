@@ -9,10 +9,17 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Tokyo Night Storm"
-config.font = wezterm.font("SFMono Nerd Font")
-config.font_size = 12
 
-config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- performance issues: https://github.com/wez/wezterm/issues/2669
+config.font = wezterm.font({
+	family = "Monaspace Neon Var",
+	harfbuzz_features = { "ss01", "calt" },
+})
+
+config.font_size = 24
+
+-- performance issues: https://github.com/wez/wezterm/issues/2669
+config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
+config.max_fps = 120
 config.enable_tab_bar = false
 config.inactive_pane_hsb = {}
 
@@ -27,27 +34,18 @@ config.send_composed_key_when_right_alt_is_pressed = false
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
-	neovim.forward_or_default("h", "CTRL", util.focus_relative_fn("Left")),
-	neovim.forward_or_default("j", "CTRL", util.focus_relative_fn("Down")),
-	neovim.forward_or_default("k", "CTRL", util.focus_relative_fn("Up")),
-	neovim.forward_or_default("l", "CTRL", util.focus_relative_fn("Right")),
-
-	neovim.forward_or_default("h", "CTRL|META", util.resize_relative_fn("Left")),
-	neovim.forward_or_default("j", "CTRL|META", util.resize_relative_fn("Down")),
-	neovim.forward_or_default("k", "CTRL|META", util.resize_relative_fn("Up")),
-	neovim.forward_or_default("l", "CTRL|META", util.resize_relative_fn("Right")),
+	neovim.forward_or_default("LeftArrow", "CTRL", util.focus_relative_fn("Left")),
+	neovim.forward_or_default("DownArrow", "CTRL", util.focus_relative_fn("Down")),
+	neovim.forward_or_default("UpArrow", "CTRL", util.focus_relative_fn("Up")),
+	neovim.forward_or_default("RightArrow", "CTRL", util.focus_relative_fn("Right")),
 
 	{ key = "|", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "f", mods = "CTRL", action = wezterm.action.TogglePaneZoomState },
+	{ key = "f", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
-	{ key = "s", mods = "CTRL", action = workspace.open_switcher("Switch to workspace:") },
-	{ key = "v", mods = "CTRL", action = workspace.open_switcher("Switch to workspace in Neovim:", { "nvim" }) },
-	{ key = "f", mods = "META", action = workspace.switch_by_index(1) },
-	{ key = "d", mods = "META", action = workspace.switch_by_index(2) },
-	{ key = "s", mods = "META", action = workspace.switch_by_index(3) },
-	{ key = "a", mods = "META", action = workspace.switch_by_index(4) },
+	{ key = "s", mods = "LEADER", action = workspace.open_switcher("Switch to workspace:") },
+	{ key = "v", mods = "LEADER", action = workspace.open_switcher("Switch to workspace in Neovim:", { "nvim" }) },
+	{ key = "q", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 }
-
 
 return config
