@@ -15,6 +15,10 @@ yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Selec
 # configure spaces
 yabai -m space 1 --label "main"
 yabai -m space 2 --label "term"
+yabai -m space 3 --label "misc"
 
 # set default spaces for apps
+yabai -m rule --add app="^Arc$" space="main"
+yabai -m rule --add app="^Slack$" space="main"
 yabai -m rule --add app="^WezTerm$" space="term"
+yabai -m rule --add app="^DataGrip" space="misc"
