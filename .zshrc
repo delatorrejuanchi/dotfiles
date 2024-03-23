@@ -34,5 +34,12 @@ eval "$(starship init zsh)"
 # gh copilot
 eval "$(gh copilot alias -- zsh)"
 
+# cabal
+if [ -d "$HOME/.cabal/bin" ] ; then
+    PATH="$HOME/.cabal/bin:$PATH"
+fi
+
 # ghcup
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+if [ -d "$HOME/.ghcup/bin" ] ; then
+    PATH="$HOME/.ghcup/bin:$PATH"
+fi
