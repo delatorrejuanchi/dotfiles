@@ -9,5 +9,20 @@ return {
     { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
   },
 
-  opts = {},
+  opts = {
+    highlight = { backdrop = false },
+
+    jump = {
+      jumplist = true,
+      history = true,
+      register = true,
+    },
+
+    modes = {
+      char = {
+        autohide = true,
+        highlight = { backdrop = false },
+      },
+    },
+  },
 }
