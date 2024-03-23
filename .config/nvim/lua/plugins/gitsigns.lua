@@ -40,10 +40,16 @@ return {
 
         map({ "o", "x" }, "ih", gitsigns.select_hunk, "select hunk")
 
+        map("n", "<leader>ghp", gitsigns.preview_hunk, "preview hunk")
         map("n", "<leader>ghs", gitsigns.stage_hunk, "stage hunk")
         map("n", "<leader>ghu", gitsigns.undo_stage_hunk, "undo stage hunk")
         map("n", "<leader>ghr", gitsigns.reset_hunk, "reset hunk")
-        map("n", "<leader>ghp", gitsigns.preview_hunk, "preview hunk")
+        map("v", "<leader>ghs", function()
+          gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, "stage hunk")
+        map("v", "<leader>ghr", function()
+          gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, "reset hunk")
 
         map("n", "<leader>gtd", gitsigns.toggle_deleted, "toggle deleted")
         map("n", "<leader>gtw", gitsigns.toggle_word_diff, "toggle word diff")
