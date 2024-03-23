@@ -11,7 +11,7 @@ end
 config.color_scheme = "Tokyo Night Storm"
 
 config.font = wezterm.font({
-	family = "Monaspace Neon Var",
+	family = "MonaspiceNe NFM",
 	harfbuzz_features = { "ss01", "calt" },
 })
 
@@ -19,6 +19,9 @@ config.font_size = 24
 
 -- performance issues: https://github.com/wez/wezterm/issues/2669
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
+-- wayland issues: https://github.com/wez/wezterm/issues/5103
+config.enable_wayland = false
+
 config.max_fps = 120
 config.enable_tab_bar = false
 config.inactive_pane_hsb = {}
