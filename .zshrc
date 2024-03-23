@@ -33,3 +33,6 @@ eval "$(starship init zsh)"
 
 # gh copilot
 eval "$(gh copilot alias -- zsh)"
+
+# ghcup
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
