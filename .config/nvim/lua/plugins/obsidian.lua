@@ -1,9 +1,6 @@
 local prefix = "<leader>o"
 
-local vault = vim.fn.expand("~") .. "~/obsidian"
-if vim.fn.has("macunix") then
-  vault = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/main"
-end
+local vault = vim.fn.expand("~") .. "/obsidian"
 
 local workspace_personal = "personal"
 local workspace_work = "work"
