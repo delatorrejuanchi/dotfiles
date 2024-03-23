@@ -22,3 +22,13 @@ vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true
 vim.opt.smoothscroll = true
+
+-- treesitter language overrides
+vim.treesitter.language.register("bash", "zsh")
+
+-- filetype overrides
+vim.filetype.add({
+  pattern = {
+    [".*/hypr/.*%.conf"] = "hyprlang",
+  },
+})
