@@ -5,7 +5,9 @@ return {
 
     opts = {
       servers = {
-        phpactor = {},
+        phpactor = {
+          mason = false,
+        },
       },
     },
   },
