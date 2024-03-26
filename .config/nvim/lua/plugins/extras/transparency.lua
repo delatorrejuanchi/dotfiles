@@ -10,9 +10,6 @@ return {
       local transparent = require("transparent")
 
       transparent.setup(opts)
-
-      transparent.clear_prefix("WhichKey")
-      transparent.clear_prefix("Trouble")
     end,
   },
   {
@@ -26,6 +23,10 @@ return {
         highlights.StatusLine = { bg = "none" }
         highlights.StatusLineNC = { bg = "none" }
       end,
+
+      styles = {
+        sidebars = "transparent",
+      },
     },
   },
   {
