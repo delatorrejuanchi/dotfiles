@@ -50,8 +50,7 @@ return {
         "williamboman/mason.nvim",
 
         opts = function(_, opts)
-          -- TODO: add golangci-lint to ensure_installed after when >v1.56.2 is released
-          -- opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "golangci-lint" })
+          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "golangci-lint" })
         end,
       },
     },

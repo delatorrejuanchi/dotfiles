@@ -1,16 +1,14 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    optional = true,
+  "neovim/nvim-lspconfig",
+  optional = true,
 
-    opts = {
-      servers = {
-        clangd = {
-          cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-          },
+  opts = {
+    servers = {
+      clangd = {
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
         },
       },
     },

@@ -1,3 +1,5 @@
+local util = require("util")
+
 local function setup_servers(servers, setup, capabilities)
   local function handle(server)
     local opts = vim.tbl_deep_extend(
@@ -65,15 +67,13 @@ return {
     },
 
     config = function(_, opts)
-      local Util = require("util")
-
-      Util.lsp_on_attach(function(client, bufnr)
+      util.lsp_on_attach(function(client, bufnr)
         if client.supports_method("textDocument/inlayHint") then
           vim.lsp.inlay_hint.enable(bufnr)
         end
       end)
 
-      Util.lsp_on_attach(function(client, bufnr)
+      util.lsp_on_attach(function(client, bufnr)
         if client.supports_method("textDocument/codeLens") then
           vim.lsp.codelens.refresh()
 

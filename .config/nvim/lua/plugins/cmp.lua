@@ -3,8 +3,8 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
+      { "hrsh7th/cmp-nvim-lsp", optional = true },
     },
 
     event = "InsertEnter",
@@ -37,16 +37,14 @@ return {
     end,
   },
   {
-    "hrsh7th/cmp-nvim-lsp",
-    dependencies = {
-      {
-        "neovim/nvim-lspconfig",
+    "neovim/nvim-lspconfig",
+    optional = true,
 
-        opts = function(_, opts)
-          opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
-        end,
-      },
-    },
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+
+    opts = function(_, opts)
+      opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
+    end,
   },
   {
     "folke/noice.nvim",

@@ -1,8 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "folke/noice.nvim",
-  },
+  dependencies = { "folke/noice.nvim" },
 
   event = "VeryLazy",
 

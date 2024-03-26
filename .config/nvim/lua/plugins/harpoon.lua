@@ -1,38 +1,39 @@
-local prefix = "<leader>h"
-
 return {
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
+  "ThePrimeagen/harpoon",
+  branch = "harpoon2",
 
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      {
-        "folke/which-key.nvim",
-        optional = true,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    {
+      "folke/which-key.nvim",
+      optional = true,
 
-        opts = {
-          defaults = {
-            [prefix] = { name = "+harpoon" },
-          },
+      opts = {
+        defaults = {
+          ["<leader>h"] = { name = "+harpoon" },
         },
       },
     },
+  },
 
-    opts = {},
+  keys = {
+    {
+      "<leader>ha",
+      function()
+        require("harpoon"):list():append()
+      end,
+      desc = "add",
+    },
+    {
+      "<leader>hh",
+      function()
+        local harpoon = require("harpoon")
 
-    keys = {
-      -- stylua: ignore
-      { prefix .. "a", function() require("harpoon"):list():append() end, desc = "add" },
-      {
-        prefix .. "h",
-        function()
-          local harpoon = require("harpoon")
-
-          harpoon.ui:toggle_quick_menu(harpoon:list(), { border = "rounded", title_pos = "center" })
-        end,
-        desc = "toggle quick menu",
-      },
+        harpoon.ui:toggle_quick_menu(harpoon:list(), { border = "rounded", title_pos = "center" })
+      end,
+      desc = "toggle quick menu",
     },
   },
+
+  opts = {},
 }

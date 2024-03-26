@@ -1,21 +1,15 @@
 local util = require("util")
 
 return {
-  {
-    "windwp/nvim-autopairs",
+  "windwp/nvim-autopairs",
 
-    event = "InsertEnter",
+  event = "InsertEnter",
 
-    opts = {},
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    optional = true,
+  config = function(_, opts)
+    require("nvim-autopairs").setup(opts)
 
-    init = function()
-      util.on_load("nvim-cmp", function()
-        require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-      end)
-    end,
-  },
+    util.plugin.maybe_register_load_callback("nvim-cmp", function()
+      require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+    end)
+  end,
 }

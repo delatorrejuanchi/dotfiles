@@ -1,4 +1,4 @@
-local Util = require("util")
+local util = require("util")
 
 return {
   "neovim/nvim-lspconfig",
@@ -25,7 +25,7 @@ return {
     setup = {
       yamlls = function()
         -- NOTE: it seems like yamlls doesn't set the `documentFormattingProvider` capability automatically.
-        Util.lsp_on_attach(function(client, _)
+        util.lsp_on_attach(function(client, _)
           if client.name ~= "yamlls" then
             return
           end

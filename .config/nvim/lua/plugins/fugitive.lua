@@ -4,6 +4,13 @@ return {
     dependencies = {
       { "tpope/vim-rhubarb" },
       {
+        "seanbreckenridge/yadm-git.vim",
+
+        config = function()
+          vim.g.yadm_git_gitgutter_enabled = 0
+        end,
+      },
+      {
         "folke/which-key.nvim",
         optional = true,
 
@@ -14,16 +21,7 @@ return {
           },
         },
       },
-      {
-        "seanbreckenridge/yadm-git.vim",
-
-        config = function()
-          vim.g.yadm_git_gitgutter_enabled = 0
-        end,
-      },
     },
-
-    event = "VeryLazy",
 
     keys = {
       { "<leader>ga.", "<cmd>Git add %<CR>", mode = { "n" }, desc = "buffer" },

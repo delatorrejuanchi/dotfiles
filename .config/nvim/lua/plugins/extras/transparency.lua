@@ -22,7 +22,6 @@ return {
     opts = {
       transparent = true,
 
-      -- FIXME: doing this we can no longer configure on_highlights elsewhere.
       on_highlights = function(highlights)
         highlights.StatusLine = { bg = "none" }
         highlights.StatusLineNC = { bg = "none" }
@@ -70,7 +69,7 @@ return {
     },
   },
   {
-    "folke/nvim.nvim",
+    "folke/trouble.nvim",
     optional = true,
 
     dependencies = {

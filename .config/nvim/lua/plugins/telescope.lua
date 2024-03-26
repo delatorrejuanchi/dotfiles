@@ -1,19 +1,7 @@
-local Util = require("util")
-
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-
-      build = "make",
-
-      init = function()
-        Util.on_load("telescope.nvim", function()
-          require("telescope").load_extension("fzf")
-        end)
-      end,
-    },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     {
       "folke/which-key.nvim",
       optional = true,
@@ -60,4 +48,10 @@ return {
       sorting_strategy = "ascending",
     },
   },
+
+  config = function(_, opts)
+    require("telescope").setup(opts)
+
+    require("telescope").load_extension("fzf")
+  end,
 }

@@ -1,3 +1,5 @@
+local util = require("util")
+
 return {
   "mfussenegger/nvim-lint",
 
@@ -5,6 +7,7 @@ return {
 
   config = function(_, opts)
     local lint = require("lint")
+
     lint.linters_by_ft = opts.linters_by_ft or {}
 
     local function try_lint()
@@ -20,7 +23,7 @@ return {
     end
 
     vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
-      callback = require("util").debounce(100, try_lint),
+      callback = util.debounce(100, try_lint),
     })
   end,
 }

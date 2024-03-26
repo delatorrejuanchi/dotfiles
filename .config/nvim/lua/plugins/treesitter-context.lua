@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
 
-  event = { "BufReadPre" },
+  event = "BufReadPre",
 
   opts = {},
 }

@@ -3,6 +3,7 @@ local char = "│"
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
 
     event = "BufReadPre",
 
@@ -13,8 +14,6 @@ return {
       },
       scope = { enabled = false },
     },
-
-    main = "ibl",
   },
   {
     "echasnovski/mini.indentscope",
