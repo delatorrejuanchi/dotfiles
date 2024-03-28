@@ -1,4 +1,4 @@
----@class Root
+---@class util.root
 local M = {}
 
 ---@return string|nil
