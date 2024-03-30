@@ -16,8 +16,8 @@ return {
         preselect = cmp.PreselectMode.None,
 
         mapping = cmp.mapping.preset.insert({
-          ["<Down>"] = { i = cmp.mapping.select_next_item() },
-          ["<Up>"] = { i = cmp.mapping.select_prev_item() },
+          ["<Down>"] = { i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }) },
+          ["<Up>"] = { i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }) },
           ["<CR>"] = { i = cmp.mapping.confirm({ select = false }) },
           ["<Tab>"] = { i = cmp.mapping.confirm({ select = true }) },
         }),
