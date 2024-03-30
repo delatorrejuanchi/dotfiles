@@ -20,10 +20,14 @@ return {
     {
       "<leader><space>",
       function()
-        if vim.uv.fs_stat(vim.uv.cwd() .. "/.git") then
-          require("telescope.builtin").git_files()
+        if
+          util.root.git()
+          and not vim.uv.fs_stat(util.root.get() .. "/.ignore")
+          and not vim.uv.fs_stat(util.root.get() .. "/.rgignore")
+        then
+          require("telescope.builtin").git_files({ cwd = util.root.git() })
         else
-          require("telescope.builtin").find_files()
+          require("telescope.builtin").find_files({ cwd = util.root.get() })
         end
       end,
       desc = "find files",
@@ -46,6 +50,12 @@ return {
       },
 
       sorting_strategy = "ascending",
+    },
+
+    pickers = {
+      git_files = {
+        show_untracked = true,
+      },
     },
   },
 
