@@ -62,6 +62,7 @@ return {
       { "K", vim.lsp.buf.hover, desc = "hover documentation" },
       { "<leader>cr", vim.lsp.buf.rename, desc = "rename" },
       { "<leader>ca", vim.lsp.buf.code_action, desc = "code action" },
+      { "<leader>cl", vim.lsp.codelens.run, desc = "codelens" },
     },
 
     config = function(_, opts)
