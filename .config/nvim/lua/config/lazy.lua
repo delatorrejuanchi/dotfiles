@@ -40,7 +40,6 @@ local spec = {
   { import = "plugins.lang.php" },
   { import = "plugins.lang.yaml" },
 
-  { import = "plugins.extras.indent-guides" },
   { import = "plugins.extras.testing" },
   { import = "plugins.extras.transparency" },
 }
