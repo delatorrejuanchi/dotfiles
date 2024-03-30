@@ -1,3 +1,5 @@
+local util = require("util")
+
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
 
@@ -47,3 +49,6 @@ vim.keymap.set("n", "g,", "gv", { desc = "goto last visual selection" })
 
 -- quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "quit" })
+
+-- lazygit
+vim.keymap.set("n", "<leader>gg", util.git.lazygit, { desc = "lazygit" })
