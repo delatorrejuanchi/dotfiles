@@ -1,5 +1,3 @@
-local util = require("util")
-
 local function setup_servers(servers, setup, capabilities)
   local function handle(server)
     local opts = vim.tbl_deep_extend(
