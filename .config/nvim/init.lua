@@ -1,1 +1,3 @@
-require("config.lazy")
+_G.util = require("util")
+
+require("config")
