@@ -67,12 +67,6 @@ return {
 
     config = function(_, opts)
       util.lsp.on_attach(function(client, bufnr)
-        if client.supports_method("textDocument/inlayHint") then
-          vim.lsp.inlay_hint.enable(bufnr)
-        end
-      end)
-
-      util.lsp.on_attach(function(client, bufnr)
         if client.supports_method("textDocument/codeLens") then
           vim.lsp.codelens.refresh()
 
