@@ -13,13 +13,8 @@ return {
       local cmp = require("cmp")
 
       return {
-        preselect = cmp.PreselectMode.None,
-
         mapping = cmp.mapping.preset.insert({
-          ["<Down>"] = { i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }) },
-          ["<Up>"] = { i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }) },
-          ["<CR>"] = { i = cmp.mapping.confirm({ select = false }) },
-          ["<Tab>"] = { i = cmp.mapping.confirm({ select = true }) },
+          ["<C-y>"] = { i = cmp.mapping.confirm({ select = true }) },
         }),
 
         snippet = {
