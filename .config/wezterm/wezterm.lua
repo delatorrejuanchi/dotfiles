@@ -42,7 +42,7 @@ config.keys = {
 	neovim.forward_or_default("UpArrow", "CTRL", util.focus_relative_fn("Up")),
 	neovim.forward_or_default("RightArrow", "CTRL", util.focus_relative_fn("Right")),
 
-	{ key = "|", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "|", mods = "LEADER|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) }, -- FIXME: on macOS, this keybind works without adding SHIFT; on linux, it doesn't seem to work correctly.
 	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "f", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
