@@ -1,18 +1,16 @@
 local char = "│"
 
 return {
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
+  "lukas-reineke/indent-blankline.nvim",
+  main = "ibl",
 
-    event = "BufReadPre",
+  event = "BufReadPre",
 
-    opts = {
-      indent = {
-        char = char,
-        tab_char = char,
-      },
-      scope = { enabled = false },
+  opts = {
+    indent = {
+      char = char,
+      tab_char = char,
     },
+    scope = { enabled = false },
   },
 }
