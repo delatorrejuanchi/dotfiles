@@ -3,6 +3,9 @@ local util = require("util")
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
 
+-- save
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<cmd>update<CR><esc>", { desc = "save" })
+
 -- better up/down
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count? 'k' : 'gk'", { expr = true, desc = "up" })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count? 'j' : 'gj'", { expr = true, desc = "down" })
