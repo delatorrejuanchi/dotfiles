@@ -22,6 +22,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true
 vim.opt.smoothscroll = true
+vim.opt.wrap = false
 
 -- treesitter language overrides
 vim.treesitter.language.register("bash", "zsh")
