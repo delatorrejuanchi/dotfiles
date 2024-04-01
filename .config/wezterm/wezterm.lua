@@ -15,7 +15,7 @@ config.font = wezterm.font({
 	harfbuzz_features = { "ss01", "calt" },
 })
 
-config.font_size = 24
+config.font_size = 16
 
 -- performance issues: https://github.com/wez/wezterm/issues/2669
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
