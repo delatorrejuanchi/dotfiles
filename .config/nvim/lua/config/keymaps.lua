@@ -1,5 +1,3 @@
-local util = require("util")
-
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
 
