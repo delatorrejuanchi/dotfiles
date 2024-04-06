@@ -1,5 +1,6 @@
 local meh_1 = "<C-M-!>"
 local meh_2 = "<C-M-@>"
+local meh_3 = "<C-M-#>"
 
 return {
   {
@@ -14,6 +15,12 @@ return {
           require("cmp").confirm({ select = true })
         end,
         desc = "confirm completion",
+      },
+      {
+        meh_3,
+        mode = "i",
+        "<cmd>lua vim.snippet.jump(1)<CR>",
+        desc = "snippet jump forward",
       },
     },
   },
