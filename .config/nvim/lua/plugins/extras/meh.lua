@@ -11,7 +11,7 @@ return {
         meh_1,
         mode = "i",
         function()
-          require("cmp").mapping.confirm({ select = true })
+          require("cmp").confirm({ select = true })
         end,
         desc = "confirm completion",
       },
