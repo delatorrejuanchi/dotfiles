@@ -24,18 +24,8 @@ local spec = {
   },
 
   { import = "plugins" },
-
-  { import = "plugins.lang.c" },
-  { import = "plugins.lang.lua" },
-  { import = "plugins.lang.haskell" },
-  { import = "plugins.lang.go" },
-  { import = "plugins.lang.json" },
-  { import = "plugins.lang.markdown" },
-  { import = "plugins.lang.php" },
-  { import = "plugins.lang.yaml" },
-
-  { import = "plugins.extras.testing" },
-  { import = "plugins.extras.transparency" },
+  { import = "plugins.lang" },
+  { import = "plugins.extras" },
 }
 
 require("lazy").setup(spec, {
