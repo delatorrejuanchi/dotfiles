@@ -34,6 +34,7 @@ return {
             suggestion.next()
           end
         end,
+        desc = "accept/trigger suggestion",
       },
     },
   },
