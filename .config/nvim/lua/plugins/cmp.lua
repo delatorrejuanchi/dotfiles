@@ -14,7 +14,7 @@ return {
 
       return {
         mapping = cmp.mapping.preset.insert({
-          ["<C-y>"] = { i = cmp.mapping.confirm({ select = true }) },
+          ["<Tab>"] = { i = cmp.mapping.confirm({ select = true }) },
         }),
 
         snippet = {
