@@ -56,20 +56,6 @@ return {
     end,
   },
   {
-    "folke/which-key.nvim",
-    optional = true,
-
-    dependencies = {
-      {
-        "xiyaowong/nvim-transparent",
-
-        opts = function()
-          require("transparent").clear_prefix("WhichKey")
-        end,
-      },
-    },
-  },
-  {
     "folke/trouble.nvim",
     optional = true,
 

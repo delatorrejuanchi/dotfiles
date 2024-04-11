@@ -1,19 +1,5 @@
 return {
   "lewis6991/gitsigns.nvim",
-  dependencies = {
-    {
-      "folke/which-key.nvim",
-      optional = true,
-
-      opts = {
-        defaults = {
-          ["<leader>g"] = { name = "+git" },
-          ["<leader>gh"] = { name = "+hunk" },
-          ["<leader>gt"] = { name = "+toggle" },
-        },
-      },
-    },
-  },
 
   event = { "BufReadPre", "BufNewFile" },
 

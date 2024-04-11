@@ -44,16 +44,6 @@ return {
       "folke/neodev.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      {
-        "folke/which-key.nvim",
-        optional = true,
-
-        opts = {
-          defaults = {
-            ["<leader>c"] = { name = "+code" },
-          },
-        },
-      },
     },
 
     event = "BufReadPre",
@@ -87,19 +77,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     optional = true,
-
-    dependencies = {
-      {
-        "folke/which-key.nvim",
-        optional = true,
-
-        opts = {
-          defaults = {
-            ["<leader>s"] = { name = "+search" },
-          },
-        },
-      },
-    },
 
     keys = {
       { "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "goto definition" },

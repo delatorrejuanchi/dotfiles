@@ -10,17 +10,6 @@ return {
           vim.g.yadm_git_gitgutter_enabled = 0
         end,
       },
-      {
-        "folke/which-key.nvim",
-        optional = true,
-
-        opts = {
-          defaults = {
-            ["<leader>g"] = { name = "+git" },
-            ["<leader>ga"] = { name = "+add" },
-          },
-        },
-      },
     },
 
     keys = {

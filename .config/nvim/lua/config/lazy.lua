@@ -52,4 +52,5 @@ require("lazy").setup(spec, {
       },
     },
   },
+  change_detection = { notify = false },
 })

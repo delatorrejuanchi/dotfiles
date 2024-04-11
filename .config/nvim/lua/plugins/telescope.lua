@@ -2,16 +2,6 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    {
-      "folke/which-key.nvim",
-      optional = true,
-
-      opts = {
-        defaults = {
-          ["<leader>s"] = { name = "+search" },
-        },
-      },
-    },
   },
 
   cmd = { "Telescope" },

@@ -5,16 +5,6 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "nvim-neotest/nvim-nio",
-    {
-      "folke/which-key.nvim",
-      optional = true,
-
-      opts = {
-        defaults = {
-          ["<leader>t"] = { name = "+test" },
-        },
-      },
-    },
   },
 
   keys = {

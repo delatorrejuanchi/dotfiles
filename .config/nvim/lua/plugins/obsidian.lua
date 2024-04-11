@@ -12,16 +12,6 @@ return {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
-      {
-        "folke/which-key.nvim",
-        optional = true,
-
-        opts = {
-          defaults = {
-            [prefix] = { name = "+obsidian" },
-          },
-        },
-      },
     },
 
     event = {
