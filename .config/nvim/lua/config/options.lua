@@ -1,28 +1,42 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- clipboard
 vim.opt.clipboard = "unnamedplus"
-vim.opt.ignorecase = true
+
+-- undofile
+vim.opt.undofile = true
+
+-- disable text wrap
+vim.opt.wrap = false
+
+-- less visual clutter
 vim.opt.laststatus = 0
-vim.opt.list = true
+vim.opt.showmode = false
 vim.opt.fillchars = { eob = " " }
-vim.opt.mouse = "a"
+vim.opt.shortmess:append({ I = true })
+
+-- line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 10
-vim.opt.shiftround = true
-vim.opt.shortmess:append({ W = true, I = true, c = true })
-vim.opt.showmode = false
-vim.opt.sidescrolloff = 10
+
+-- sign column
 vim.opt.signcolumn = "yes"
+
+-- search
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 vim.opt.smartindent = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.tabstop = 2
-vim.opt.undofile = true
-vim.opt.smoothscroll = true
-vim.opt.wrap = false
+
+-- scrolloff
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 -- treesitter language overrides
 vim.treesitter.language.register("bash", "zsh")
