@@ -38,6 +38,10 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 10
 
+-- split
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- treesitter language overrides
 vim.treesitter.language.register("bash", "zsh")
 
