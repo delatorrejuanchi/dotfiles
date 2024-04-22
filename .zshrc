@@ -31,9 +31,6 @@ eval "$(zoxide init zsh)"
 # starship
 eval "$(starship init zsh)"
 
-# gh copilot
-eval "$(gh copilot alias -- zsh)"
-
 # cabal
 if [ -d "$HOME/.cabal/bin" ] ; then
     PATH="$HOME/.cabal/bin:$PATH"
