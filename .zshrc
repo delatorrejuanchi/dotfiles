@@ -23,7 +23,7 @@ alias vi="nvim"
 alias vim="nvim"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
