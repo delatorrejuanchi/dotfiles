@@ -41,8 +41,6 @@ vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev se
 -- next/prev
 vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "next quickfix" })
 vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "prev quickfix" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic" })
 
 -- goto
 vim.keymap.set("n", "g.", "gi", { desc = "goto last insertion and insert" })
