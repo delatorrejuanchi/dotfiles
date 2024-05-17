@@ -44,4 +44,6 @@ return {
     { "<leader>dl", function() require("dap").run_last() end, desc = "run last" },
     { "<leader>dq", function() require("dap").terminate() end, desc = "terminate" },
   },
+
+  config = function() end,
 }
