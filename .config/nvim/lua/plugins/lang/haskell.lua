@@ -46,24 +46,10 @@ return {
     "nvim-neotest/neotest",
     optional = true,
 
-    dependencies = { "nvim-neotest/neotest-go" },
+    dependencies = { "mrcjkb/neotest-haskell" },
 
     opts = function(_, opts)
-      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-go") })
+      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-haskell") })
     end,
-  },
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-
-    dependencies = {
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-
-        opts = function(_, opts)
-          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "haskell" })
-        end,
-      },
-    },
   },
 }

@@ -105,8 +105,7 @@ return {
     dependencies = { "nvim-neotest/neotest-go" },
 
     opts = function(_, opts)
-      local neotest_go = require("neotest-go")
-      neotest_go({ recursive_run = true })
+      require("neotest-go")({ recursive_run = true })
 
       opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-go") })
     end,
@@ -116,13 +115,6 @@ return {
     optional = true,
 
     dependencies = {
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-
-        opts = function(_, opts)
-          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "delve" })
-        end,
-      },
       { "leoluz/nvim-dap-go", opts = {} },
     },
   },
