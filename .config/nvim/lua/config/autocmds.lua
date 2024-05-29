@@ -11,3 +11,11 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
     vim.cmd("tabdo wincmd =")
   end,
 })
+
+-- do not insert a comment leader after o or O in normal mode
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("set fo-=o")
+  end,
+})
