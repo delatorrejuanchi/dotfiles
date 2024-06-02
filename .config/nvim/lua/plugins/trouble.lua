@@ -1,10 +1,7 @@
 return {
   "folke/trouble.nvim",
 
-  cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
+  cmd = { "Trouble" },
 
-  opts = {
-    use_diagnostic_signs = true,
-    icons = false,
-  },
+  opts = {},
 }
