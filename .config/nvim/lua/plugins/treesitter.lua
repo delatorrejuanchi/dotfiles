@@ -34,6 +34,13 @@ return {
 
         include_surrounding_whitespace = true,
       },
+
+      move = {
+        enable = true,
+
+        goto_next_start = { ["]f"] = "@function.outer", ["]if"] = "@function.inner" },
+        goto_previous_start = { ["[f"] = "@function.outer", ["[if"] = "@function.inner" },
+      },
     },
   },
 
