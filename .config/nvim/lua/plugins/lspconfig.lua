@@ -48,6 +48,24 @@ return {
 
     event = "BufReadPre",
 
+    keys = {
+      {
+        "grr",
+        function()
+          vim.lsp.buf.references({ include_declaration = false }, {
+            on_list = function(t)
+              vim.fn.setqflist({}, " ", t)
+              if #t.items > 1 then
+                vim.cmd("copen")
+              end
+
+              vim.cmd.cfirst()
+            end,
+          })
+        end,
+      },
+    },
+
     config = function(_, opts)
       util.lsp.on_attach(function(client, bufnr)
         if client.supports_method("textDocument/codeLens") then
