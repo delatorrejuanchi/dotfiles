@@ -24,8 +24,9 @@ vim.keymap.set("i", "<A-Down>", "<esc>:m .+1<CR>==gi", { desc = "move line down"
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "split window horizontally" })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "split window vertically" })
 
--- buffer navigation
-vim.keymap.set("n", "<leader>,", "<cmd>e #<CR>", { desc = "switch to last buffer" })
+-- buffers
+vim.keymap.set("n", "<leader>,", "<cmd>e#<CR>", { desc = "switch to last buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd|e#<CR>", { desc = "close all buffers except current" })
 
 -- clear search with escape
 vim.keymap.set("n", "<esc>", "<cmd>noh<CR><esc>", { silent = true })
