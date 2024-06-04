@@ -19,3 +19,29 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd("set fo-=o")
   end,
 })
+
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "help", "lspinfo", "qf", "checkhealth" },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
+
+-- jump to last location when opening a buffer
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function(event)
+    local buf = event.buf
+    if vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) or vim.b[buf].jumped_to_last_location then
+      return
+    end
+
+    vim.b[buf].jumped_to_last_location = true
+
+    local last_location = vim.api.nvim_buf_get_mark(buf, '"')
+    if last_location[1] > 0 and last_location[1] <= vim.api.nvim_buf_line_count(buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, last_location)
+    end
+  end,
+})
