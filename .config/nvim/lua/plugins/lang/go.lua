@@ -28,12 +28,11 @@ return {
         gopls = {
           settings = {
             gopls = {
-              analyses = { fieldalignment = false },
-              hints = { parameterNames = true },
+              usePlaceholders = true,
+              staticcheck = true,
+              semanticTokens = true,
+              allExperiments = true,
             },
-
-            staticcheck = true,
-            semanticTokens = true,
           },
         },
       },
