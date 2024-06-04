@@ -10,6 +10,8 @@ return {
       local transparent = require("transparent")
 
       transparent.setup(opts)
+
+      transparent.clear_prefix("NormalFloat")
     end,
   },
   {
