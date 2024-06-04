@@ -22,6 +22,12 @@ return {
 
       map("n", "]c", gitsigns.next_hunk, "next hunk")
       map("n", "[c", gitsigns.prev_hunk, "prev hunk")
+      map("n", "]C", function()
+        gitsigns.nav_hunk("last")
+      end, "last hunk")
+      map("n", "[C", function()
+        gitsigns.nav_hunk("first")
+      end, "first hunk")
 
       map({ "o", "x" }, "ih", gitsigns.select_hunk, "select hunk")
 
