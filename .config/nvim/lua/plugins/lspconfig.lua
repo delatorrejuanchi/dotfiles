@@ -48,12 +48,6 @@ return {
 
     event = "BufReadPre",
 
-    keys = {
-      { "<leader>cr", vim.lsp.buf.rename, desc = "rename" },
-      { "<leader>ca", vim.lsp.buf.code_action, desc = "code action" },
-      { "<leader>cl", vim.lsp.codelens.run, desc = "codelens" },
-    },
-
     config = function(_, opts)
       util.lsp.on_attach(function(client, bufnr)
         if client.supports_method("textDocument/codeLens") then
@@ -72,51 +66,5 @@ return {
         setup_servers(opts.servers, opts.setup, opts.capabilities)
       end
     end,
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    optional = true,
-
-    keys = {
-      { "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "goto definition" },
-      { "gr", "<cmd>Telescope lsp_references<CR>", desc = "goto references" },
-      { "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "goto implementations" },
-      { "gt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "goto type definition" },
-
-      { "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>", desc = "lsp document symbols" },
-      { "<leader>sw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "lsp workspace symbols" },
-    },
-
-    opts = {
-      pickers = {
-        lsp_references = {
-          include_declaration = false,
-          show_line = false,
-        },
-
-        lsp_incoming_calls = {
-          show_line = false,
-        },
-
-        lsp_outgoing_calls = {
-          show_line = false,
-        },
-
-        lsp_definitions = {
-          show_line = false,
-          reuse_win = true,
-        },
-
-        lsp_type_definitions = {
-          show_line = false,
-          reuse_win = true,
-        },
-
-        lsp_implementations = {
-          show_line = false,
-          reuse_win = true,
-        },
-      },
-    },
   },
 }
