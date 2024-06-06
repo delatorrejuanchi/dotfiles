@@ -7,10 +7,7 @@ return {
     style = "moon",
 
     styles = {
-      comments = { italic = true },
-      keywords = { italic = true },
       functions = { bold = true },
-      variables = {},
     },
   },
 }
