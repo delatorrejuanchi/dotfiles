@@ -13,6 +13,8 @@ return {
       untracked = { text = "▎" },
     },
 
+    signs_staged_enable = false,
+
     on_attach = function(buffer)
       local gitsigns = package.loaded.gitsigns
 
