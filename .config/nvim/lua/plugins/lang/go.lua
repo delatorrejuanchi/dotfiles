@@ -101,12 +101,12 @@ return {
     "nvim-neotest/neotest",
     optional = true,
 
-    dependencies = { "nvim-neotest/neotest-go" },
+    dependencies = { "fredrikaverpil/neotest-golang" },
 
     opts = function(_, opts)
-      require("neotest-go")({ recursive_run = true })
+      require("neotest-golang")({ dap_go_enabled = require("lazy.core.config").plugins["nvim-dap"] })
 
-      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-go") })
+      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-golang") })
     end,
   },
   {
