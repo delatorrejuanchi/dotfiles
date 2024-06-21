@@ -47,7 +47,5 @@ return {
       map("n", "<leader>gtd", gitsigns.toggle_deleted, "toggle deleted")
       map("n", "<leader>gtw", gitsigns.toggle_word_diff, "toggle word diff")
     end,
-
-    yadm = { enable = true },
   },
 }
