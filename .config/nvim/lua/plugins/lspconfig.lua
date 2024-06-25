@@ -37,6 +37,15 @@ local function setup_servers(servers, setup, capabilities)
   require("mason-lspconfig").setup({ ensure_installed = mason_ensure_installed, handlers = { handle } })
 end
 
+local function setqflist_or_open(t)
+  vim.fn.setqflist({}, " ", t)
+  if #t.items > 1 then
+    vim.cmd("copen")
+  end
+
+  vim.cmd.cfirst()
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -52,18 +61,16 @@ return {
       {
         "grr",
         function()
-          vim.lsp.buf.references({ include_declaration = false }, {
-            on_list = function(t)
-              vim.fn.setqflist({}, " ", t)
-              if #t.items > 1 then
-                vim.cmd("copen")
-              end
-
-              vim.cmd.cfirst()
-            end,
-          })
+          vim.lsp.buf.references({ include_declaration = false }, { on_list = setqflist_or_open })
         end,
       },
+      {
+        "gri",
+        function()
+          vim.lsp.buf.implementation({ on_list = setqflist_or_open })
+        end,
+      },
+      { "grt", vim.lsp.buf.type_definition },
     },
 
     config = function(_, opts)
