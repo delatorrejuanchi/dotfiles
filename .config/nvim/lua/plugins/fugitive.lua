@@ -1,16 +1,7 @@
 return {
   {
     "tpope/vim-fugitive",
-    dependencies = {
-      { "tpope/vim-rhubarb" },
-      {
-        "seanbreckenridge/yadm-git.vim",
-
-        config = function()
-          vim.g.yadm_git_gitgutter_enabled = 0
-        end,
-      },
-    },
+    dependencies = { "tpope/vim-rhubarb" },
 
     keys = {
       { "<leader>ga.", "<cmd>Git add %<CR>", mode = { "n" }, desc = "buffer" },

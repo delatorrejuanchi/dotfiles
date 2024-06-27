@@ -13,13 +13,4 @@ function M.git()
   return out.code == 0 and vim.trim(out.stdout) or nil
 end
 
----@return string|nil
-function M.yadm()
-  if #vim.fn.systemlist("yadm ls-files " .. M.get()) ~= 0 then
-    return vim.fn.expand("~") .. "/.local/share/yadm/repo.git"
-  end
-
-  return nil
-end
-
 return M
