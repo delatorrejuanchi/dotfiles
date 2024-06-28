@@ -1,0 +1,14 @@
+import = [
+    "~/.config/alacritty/tokyonight_moon.toml"
+]
+
+[window]
+decorations = "None"
+option_as_alt = "Both"
+padding = { x = 8, y = 8 }
+
+[font]
+normal = { family = "MonaspiceNe NFM" }
+
+[mouse]
+hide_when_typing = true
