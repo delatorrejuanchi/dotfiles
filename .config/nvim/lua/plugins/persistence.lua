@@ -38,7 +38,5 @@ return {
     })
   end,
 
-  opts = {
-    options = vim.opt.sessionoptions:get(),
-  },
+  opts = {},
 }
