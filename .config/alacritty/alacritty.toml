@@ -8,6 +8,7 @@ dynamic_padding = true
 
 [font]
 normal = { family = "MonaspiceNe NFM" }
+size = 20
 
 [mouse]
 hide_when_typing = true
