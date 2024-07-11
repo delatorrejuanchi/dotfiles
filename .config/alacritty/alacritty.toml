@@ -4,6 +4,7 @@ import = ["~/.config/alacritty/tokyonight_moon.toml"]
 decorations = "None"
 option_as_alt = "Both"
 padding = { x = 8, y = 8 }
+dynamic_padding = true
 
 [font]
 normal = { family = "MonaspiceNe NFM" }
