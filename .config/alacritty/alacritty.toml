@@ -10,3 +10,5 @@ dynamic_padding = true
 normal = { family = "MonaspiceNe NFM" }
 size = 20
 
+[env]
+TERM = "alacritty-direct"
