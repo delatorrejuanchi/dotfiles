@@ -46,18 +46,6 @@ return {
     },
   },
   {
-    "nvim-lualine/lualine.nvim",
-    optional = true,
-
-    opts = function(_, opts)
-      local transparent_auto = require("lualine.themes.auto")
-      transparent_auto.normal.c.bg = "none"
-      transparent_auto.inactive.c.bg = "none"
-
-      opts.options.theme = transparent_auto
-    end,
-  },
-  {
     "folke/trouble.nvim",
     optional = true,
 
