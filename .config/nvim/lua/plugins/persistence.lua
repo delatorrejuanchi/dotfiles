@@ -7,8 +7,13 @@ return {
         return
       end
 
+      local cmdheight = vim.opt.cmdheight
+
       vim.schedule(function()
         require("persistence").load()
+
+        -- HACK: workaround for the cmdheight being reset to 1 after loading the session
+        vim.opt.cmdheight = cmdheight
       end)
     end
 
