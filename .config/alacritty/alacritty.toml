@@ -1,6 +1,4 @@
-import = [
-    "~/.config/alacritty/tokyonight_moon.toml"
-]
+import = ["~/.config/alacritty/tokyonight_moon.toml"]
 
 [window]
 decorations = "None"
