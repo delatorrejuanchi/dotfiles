@@ -10,6 +10,9 @@ vim.opt.undofile = true
 -- disable text wrap
 vim.opt.wrap = false
 
+-- winbar
+vim.opt.winbar = "%< %f"
+
 -- less visual clutter
 vim.opt.laststatus = 0
 vim.opt.cmdheight = 0
