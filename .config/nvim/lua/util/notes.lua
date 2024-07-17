@@ -1,4 +1,4 @@
-local vault = os.getenv("OBSIDIAN_VAULT") or vim.fn.expand("~/obsidian/personal")
+local vault = os.getenv("OBSIDIAN_VAULT") or vim.fn.expand("~/obsidian")
 
 ---@class util.notes
 ---@field vault string
