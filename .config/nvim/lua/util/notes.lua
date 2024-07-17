@@ -66,11 +66,7 @@ end
 ---@param name string
 ---@return string
 function M.build_title(name)
-  local title = name:gsub("(%a)([%w_']*)", function(first, rest)
-    return first:upper() .. rest
-  end)
-
-  return title
+  return name
 end
 
 ---@class Metadata
