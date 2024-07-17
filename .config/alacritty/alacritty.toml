@@ -1,5 +1,10 @@
 import = ["~/.config/alacritty/tokyonight_moon.toml"]
 
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux attach || tmux"]
+
+
 [window]
 decorations = "None"
 option_as_alt = "Both"
