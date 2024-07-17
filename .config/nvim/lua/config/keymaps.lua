@@ -52,3 +52,8 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "quit" })
 
 -- lazygit
 vim.keymap.set("n", "<leader>gg", util.git.lazygit, { desc = "lazygit" })
+
+-- notes
+vim.keymap.set("n", "<leader>of", util.notes.find, { desc = "find notes" })
+vim.keymap.set("n", "<leader>o/", util.notes.live_grep, { desc = "live grep notes" })
+vim.keymap.set("n", "<leader>on", util.notes.quick_note, { desc = "quick note" })
