@@ -2,9 +2,18 @@ local vault = os.getenv("OBSIDIAN_VAULT") or vim.fn.expand("~/obsidian/main")
 
 ---@class util.notes
 ---@field vault string
+---@field inbox string
+---@field projects string
+---@field areas string
+---@field resources string
+---@field archive string
 local M = {
   vault = vault,
   inbox = vault .. "/inbox",
+  projects = vault .. "/projects",
+  areas = vault .. "/areas",
+  resources = vault .. "/resources",
+  archive = vault .. "/archive",
 }
 
 ---@param metadata Metadata
@@ -54,6 +63,34 @@ function M.new()
   end
 
   M.create_note(M.inbox, name)
+end
+
+local function move_note(dir)
+  assert(vim.fn.resolve(vim.fn.expand("%:p:h")) == vim.fn.resolve(M.inbox), "note is not in the inbox")
+
+  if vim.fn.isdirectory(dir) == 0 then
+    vim.fn.mkdir(dir, "p")
+  end
+
+  vim.cmd("saveas " .. dir .. "/" .. vim.fn.expand("%:t"))
+  vim.cmd("silent !rm " .. M.inbox .. "/" .. vim.fn.expand("%:t"))
+  vim.cmd("bwipeout! #")
+end
+
+function M.move_to_projects()
+  move_note(M.projects)
+end
+
+function M.move_to_areas()
+  move_note(M.areas)
+end
+
+function M.move_to_resources()
+  move_note(M.resources)
+end
+
+function M.move_to_archive()
+  move_note(M.archive)
 end
 
 ---@param name string
