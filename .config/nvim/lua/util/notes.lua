@@ -43,12 +43,12 @@ function M.live_grep()
   require("telescope.builtin").live_grep({ prompt_title = "Search Notes", cwd = M.vault })
 end
 
-function M.quick_note()
+function M.new()
   if vim.fn.isdirectory(M.inbox) == 0 then
     vim.fn.mkdir(M.inbox, "p")
   end
 
-  local name = vim.fn.input("Quick Note:")
+  local name = vim.fn.input("New Note:")
   if name == "" then
     return
   end

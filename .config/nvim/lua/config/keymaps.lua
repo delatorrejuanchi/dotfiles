@@ -56,7 +56,6 @@ vim.keymap.set("n", "<leader>gg", util.git.lazygit, { desc = "lazygit" })
 -- notes
 vim.keymap.set("n", "<leader>of", util.notes.find, { desc = "find notes" })
 vim.keymap.set("n", "<leader>o/", util.notes.live_grep, { desc = "live grep notes" })
-vim.keymap.set("n", "<leader>on", util.notes.quick_note, { desc = "quick note" })
 
 -- TODO: have a specific method for each of these
 vim.keymap.set("n", "<leader>omp", function()
@@ -71,3 +70,4 @@ end, { desc = "move note to resources" })
 vim.keymap.set("n", "<leader>od", function()
   util.notes.move_note("archive")
 end, { desc = "move note to archive" })
+vim.keymap.set("n", "<leader>on", util.notes.new, { desc = "new note" })
