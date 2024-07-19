@@ -30,4 +30,6 @@ gui:
       - "#c8d3f5"
 git:
   overrideGpg: true
+  paging:
+    externalDiffCommand: difft --color=always
 notARepository: skip
