@@ -6,5 +6,5 @@ gui:
 git:
   overrideGpg: true
   paging:
-    externalDiffCommand: difft --color=always --background=light
+    externalDiffCommand: difft --color=always --background=light --display inline
 notARepository: skip
