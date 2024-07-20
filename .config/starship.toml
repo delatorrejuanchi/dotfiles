@@ -2,26 +2,5 @@
 
 add_newline = false
 
-palette = 'tokyonight_moon'
-
-[palettes.tokyonight_moon]
-black = '#1b1d2b'
-red = '#ff757f'
-green = '#c3e88d'
-yellow = '#ffc777'
-blue = '#82aaff'
-magenta = '#c099ff'
-cyan = '#86e1fc'
-white = '#828bb8'
-
-bright-black = '#444a73'
-bright-red = '#ff757f'
-bright-green = '#c3e88d'
-bright-yellow = '#ffc777'
-bright-blue = '#82aaff'
-bright-magenta = '#c099ff'
-bright-cyan = '#86e1fc'
-bright-white = '#c8d3f5'
-
 [aws]
 disabled = true
