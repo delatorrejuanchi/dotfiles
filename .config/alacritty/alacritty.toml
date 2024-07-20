@@ -2,8 +2,7 @@ import = ["~/.config/alacritty/theme.toml"]
 
 [shell]
 program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux"]
-
+args = ["-l", "-c", "tmux attach || tmux new -s main"]
 
 [window]
 decorations = "None"
