@@ -49,7 +49,6 @@ vim.opt.splitright = true
 -- sessions
 vim.opt.sessionoptions:remove("blank")
 vim.opt.sessionoptions:remove("buffers")
-vim.opt.sessionoptions:remove("help")
 vim.opt.sessionoptions:remove("tabpages")
 
 -- treesitter language overrides
