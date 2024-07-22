@@ -12,17 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local spec = {
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function(_, opts)
-      require("tokyonight").setup(opts)
-
-      vim.cmd([[colorscheme tokyonight]])
-    end,
-  },
-
   { import = "plugins" },
   { import = "plugins.lang" },
   { import = "plugins.extras" },
@@ -32,9 +21,6 @@ require("lazy").setup(spec, {
   defaults = {
     lazy = true,
     version = false,
-  },
-  install = {
-    colorscheme = { "tokyonight" },
   },
   performance = {
     rtp = {
@@ -53,4 +39,7 @@ require("lazy").setup(spec, {
     },
   },
   change_detection = { notify = false },
+  ui = {
+    size = { width = 1, height = 1 },
+  },
 })

@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 return {
   {
     "xiyaowong/nvim-transparent",
@@ -13,23 +17,6 @@ return {
 
       transparent.clear_prefix("NormalFloat")
     end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    optional = true,
-
-    opts = {
-      transparent = true,
-
-      on_highlights = function(highlights)
-        highlights.StatusLine = { bg = "none" }
-        highlights.StatusLineNC = { bg = "none" }
-      end,
-
-      styles = {
-        sidebars = "transparent",
-      },
-    },
   },
   {
     "folke/noice.nvim",

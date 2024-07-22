@@ -3,6 +3,12 @@ return {
 
   event = { "BufReadPre", "BufNewFile" },
 
+  init = function()
+    vim.api.nvim_set_hl(0, "GitSignsAdd", { link = "Added" })
+    vim.api.nvim_set_hl(0, "GitSignsChange", { link = "Changed" })
+    vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "Removed" })
+  end,
+
   opts = {
     signs = {
       add = { text = "▎" },
