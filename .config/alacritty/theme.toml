@@ -14,10 +14,10 @@ yellow = '#ffc777'
 blue = '#82aaff'
 magenta = '#c099ff'
 cyan = '#86e1fc'
-white = '#a5aecc'
+white = '#575c71'
 
 [colors.bright]
-black = '#3d4153'
+black = '#313445'
 red = '#ff757f'
 green = '#c3e88d'
 yellow = '#ffc777'
