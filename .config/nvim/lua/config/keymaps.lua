@@ -61,3 +61,9 @@ vim.keymap.set("n", "<leader>op", util.notes.move_to_projects, { desc = "move to
 vim.keymap.set("n", "<leader>oa", util.notes.move_to_areas, { desc = "move to areas" })
 vim.keymap.set("n", "<leader>or", util.notes.move_to_resources, { desc = "move to resources" })
 vim.keymap.set("n", "<leader>od", util.notes.move_to_archive, { desc = "move to archive" })
+
+-- quick grep
+-- stylua: ignore start
+vim.keymap.set("n", "<leader>ct", function() util.quick_grep("TODO") end, { desc = "find TODOs" })
+vim.keymap.set("n", "<leader>cf", function() util.quick_grep("FIXME") end, { desc = "find FIXMEs" })
+-- stylua: ignore end

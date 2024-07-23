@@ -41,4 +41,11 @@ function M.create_undo()
   end
 end
 
+---@param search string
+function M.quick_grep(search)
+  vim.cmd("silent grep! " .. search .. " --glob='!.git/'")
+  vim.cmd("copen")
+  vim.cmd("cfirst")
+end
+
 return M
