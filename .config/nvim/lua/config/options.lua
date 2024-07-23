@@ -39,8 +39,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- scrolloff
-vim.opt.scrolloff = 10000
-vim.opt.sidescrolloff = 30
+vim.opt.scrolloff = 20
+vim.opt.sidescrolloff = 20
 
 -- split
 vim.opt.splitbelow = true

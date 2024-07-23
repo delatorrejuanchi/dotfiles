@@ -45,3 +45,22 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- stay centered
+vim.api.nvim_create_autocmd({ "BufReadPost", "CursorMoved", "CursorMovedI" }, {
+  callback = function(event)
+    local buf = event.buf
+
+    local line = vim.api.nvim_win_get_cursor(0)[1]
+    if line ~= vim.b[buf].previous_line then
+      vim.cmd("norm! zz")
+      vim.b[buf].previous_line = line
+
+      if vim.fn.mode() == "i" then
+        local column = vim.fn.getcurpos()[5]
+
+        vim.fn.cursor({ line, column })
+      end
+    end
+  end,
+})
