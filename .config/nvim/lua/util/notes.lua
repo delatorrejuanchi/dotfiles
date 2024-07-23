@@ -7,6 +7,7 @@ local vault = os.getenv("OBSIDIAN_VAULT") or vim.fn.expand("~/obsidian/main")
 ---@field areas string
 ---@field resources string
 ---@field archive string
+---@field journal string
 local M = {
   vault = vault,
   inbox = vault .. "/inbox",
@@ -14,6 +15,7 @@ local M = {
   areas = vault .. "/areas",
   resources = vault .. "/resources",
   archive = vault .. "/archive",
+  journal = vault .. "/journal",
 }
 
 ---@param metadata Metadata
@@ -52,17 +54,23 @@ function M.live_grep()
   require("telescope.builtin").live_grep({ prompt_title = "Search Notes", cwd = M.vault })
 end
 
-function M.new()
-  if vim.fn.isdirectory(M.inbox) == 0 then
-    vim.fn.mkdir(M.inbox, "p")
-  end
+function M.today()
+  local name = os.date("%Y-%m-%d") --[[@as string]]
 
+  M.create_note(M.journal, name)
+end
+
+function M.scratchpad()
+  M.create_note(M.vault, "scratchpad")
+end
+
+function M.new()
   local name = vim.fn.input("New Note:")
   if name == "" then
     return
   end
 
-  M.create_note(M.inbox, name)
+  M.create_note(M.inbox, name, os.time())
 end
 
 local function move_note(dir)
@@ -94,10 +102,15 @@ function M.move_to_archive()
 end
 
 ---@param name string
----@param time integer
+---@param time integer?
 ---@return string
 function M.build_note_id(name, time)
-  return time .. "-" .. name:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+  local id = name:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+  if time then
+    id = time .. "-" .. id
+  end
+
+  return id
 end
 
 ---@param name string
@@ -113,31 +126,35 @@ end
 
 ---@param id string
 ---@param title string
----@param time integer
+---@param time integer?
 ---@return Metadata
 function M.build_metadata(id, title, time)
   return {
     id = id,
     aliases = { title },
-    created_at = os.date("!%Y-%m-%dT%H:%M:%SZ", time),
+    created_at = os.date("%Y-%m-%dT%H:%M:%SZ", time),
   }
 end
 
 ---@param dir string
 ---@param name string
-function M.create_note(dir, name)
+---@param time integer?
+function M.create_note(dir, name, time)
   if vim.fn.isdirectory(dir) == 0 then
     vim.fn.mkdir(dir, "p")
   end
 
-  local time = os.time()
   local id = M.build_note_id(name, time)
   local title = M.build_title(name)
   local metadata = M.build_metadata(id, title, time)
 
-  vim.cmd("edit " .. dir .. "/" .. id .. ".md")
+  local path = dir .. "/" .. id .. ".md"
 
-  vim.fn.append(0, vim.iter({ build_frontmatter(metadata), "", build_header(title), "" }):flatten():totable())
+  vim.cmd("edit " .. path)
+
+  if vim.fn.filereadable(path) == 0 then
+    vim.fn.append(0, vim.iter({ build_frontmatter(metadata), "", build_header(title), "" }):flatten():totable())
+  end
 end
 
 return M
