@@ -37,7 +37,32 @@ local function setup_servers(servers, setup, capabilities)
   require("mason-lspconfig").setup({ ensure_installed = mason_ensure_installed, handlers = { handle } })
 end
 
-local function setqflist_or_open(t)
+local function setqflist_or_open(t, include_all)
+  local function should_ignore(item)
+    for _, pattern in ipairs({ "[^a-z]test[^a-z]", "[^a-z]mock[^a-z]", "Test[^a-z]", "Mock[^a-z]" }) do
+      if string.match(item.filename, pattern) then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  if not include_all then
+    local items = {}
+    for _, item in ipairs(t.items) do
+      if not should_ignore(item) then
+        table.insert(items, item)
+      end
+    end
+
+    t.items = items
+  end
+
+  if not t or not t.items or #t.items == 0 then
+    return
+  end
+
   vim.fn.setqflist({}, " ", t)
   if #t.items > 1 then
     vim.cmd("copen")
@@ -63,14 +88,34 @@ return {
         function()
           vim.lsp.buf.references({ include_declaration = false }, { on_list = setqflist_or_open })
         end,
+        desc = "goto references",
+      },
+      {
+        "grR",
+        function()
+          vim.lsp.buf.references({ include_declaration = true }, {
+            on_list = function(t)
+              setqflist_or_open(t, true)
+            end,
+          })
+        end,
+        desc = "goto references (all)",
       },
       {
         "gri",
         function()
           vim.lsp.buf.implementation({ on_list = setqflist_or_open })
         end,
+        desc = "goto implementation",
       },
-      { "grt", vim.lsp.buf.type_definition },
+      {
+        "grI",
+        function()
+          vim.lsp.buf.implementation({ on_list = setqflist_or_open })
+        end,
+        desc = "goto implementation (all)",
+      },
+      { "grt", vim.lsp.buf.type_definition, desc = "goto type definition" },
     },
 
     config = function(_, opts)
