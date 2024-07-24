@@ -69,3 +69,6 @@ vim.keymap.set("n", "<leader>od", util.notes.move_to_archive, { desc = "move to 
 vim.keymap.set("n", "<leader>ct", function() util.quick_grep("TODO") end, { desc = "find TODOs" })
 vim.keymap.set("n", "<leader>cf", function() util.quick_grep("FIXME") end, { desc = "find FIXMEs" })
 -- stylua: ignore end
+
+-- settings
+vim.keymap.set("n", "<leader>uc", util.ui.toggle_stay_centered, { desc = "toggle stay centered" })

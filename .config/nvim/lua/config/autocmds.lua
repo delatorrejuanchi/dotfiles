@@ -49,6 +49,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- stay centered
 vim.api.nvim_create_autocmd({ "BufReadPost", "CursorMoved", "CursorMovedI" }, {
   callback = function(event)
+    if not util.ui.should_stay_centered() then
+      return
+    end
+
     local buf = event.buf
 
     local line = vim.api.nvim_win_get_cursor(0)[1]

@@ -5,6 +5,7 @@
 ---@field root util.root
 ---@field terminal util.terminal
 ---@field notes util.notes
+---@field ui util.ui
 local M = {
   lsp = require("util.lsp"),
   git = require("util.git"),
@@ -12,6 +13,7 @@ local M = {
   plugin = require("util.plugin"),
   terminal = require("util.terminal"),
   notes = require("util.notes"),
+  ui = require("util.ui"),
 }
 
 ---@param ms number
