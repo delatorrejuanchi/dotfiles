@@ -39,7 +39,7 @@ end
 
 local function setqflist_or_open(t, include_all)
   local function should_ignore(item)
-    for _, pattern in ipairs({ "[^a-z]test[^a-z]", "[^a-z]mock[^a-z]", "Test[^a-z]", "Mock[^a-z]" }) do
+    for _, pattern in ipairs({ "[^a-z]test[^a-z]", "[^a-z]mock[^a-z]", "[^a-z]mocks[^a-z]", "Test[^a-z]", "Mock[^a-z]" }) do
       if string.match(item.filename, pattern) then
         return true
       end
