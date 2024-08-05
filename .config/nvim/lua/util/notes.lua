@@ -29,7 +29,7 @@ local function build_frontmatter(metadata)
       table.insert(frontmatter, key .. ":")
 
       for _, v in ipairs(value) do
-        table.insert(frontmatter, "  - " .. v)
+        table.insert(frontmatter, '  - "' .. v .. '"')
       end
     else
       table.insert(frontmatter, key .. ": " .. value)
