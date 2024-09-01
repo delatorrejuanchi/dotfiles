@@ -6,7 +6,7 @@ return {
 
   opts = {
     library = {
-      uv = "luvit-meta/library",
+      { path = "luvit-meta/library", words = { "vim%.uv" } },
     },
   },
 }
