@@ -5,7 +5,9 @@ vim.g.maplocalleader = " "
 vim.opt.mouse = ""
 
 -- clipboard
-vim.opt.clipboard = "unnamedplus"
+vim.schedule(function()
+  vim.opt.clipboard = "unnamedplus"
+end)
 
 -- undofile
 vim.opt.undofile = true
