@@ -10,14 +10,10 @@ return {
     {
       "<leader><space>",
       function()
-        if
-          util.root.git()
-          and not vim.uv.fs_stat(util.root.get() .. "/.ignore")
-          and not vim.uv.fs_stat(util.root.get() .. "/.rgignore")
-        then
-          require("telescope.builtin").git_files({ cwd = util.root.git() })
+        if util.git:root() then
+          require("telescope.builtin").git_files({ cwd = util.git:root() })
         else
-          require("telescope.builtin").find_files({ cwd = util.root.get() })
+          require("telescope.builtin").find_files()
         end
       end,
       desc = "find files",
