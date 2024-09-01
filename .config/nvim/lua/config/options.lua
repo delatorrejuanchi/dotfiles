@@ -20,6 +20,7 @@ vim.opt.winbar = "%< %f"
 
 -- less visual clutter
 vim.opt.laststatus = 0
+vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 vim.opt.cmdheight = 0
 vim.opt.showmode = false
 vim.opt.fillchars = { eob = " " }
