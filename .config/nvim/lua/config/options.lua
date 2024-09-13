@@ -1,9 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- disable mouse
-vim.opt.mouse = ""
-
 -- clipboard
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
