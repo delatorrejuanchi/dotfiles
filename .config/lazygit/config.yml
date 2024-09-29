@@ -5,6 +5,4 @@ gui:
   nerdFontsVersion: "3"
 git:
   overrideGpg: true
-  paging:
-    externalDiffCommand: difft --color=always --background=light --display inline
 notARepository: skip
