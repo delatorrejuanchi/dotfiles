@@ -39,10 +39,6 @@ vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "pr
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
 
--- next/prev
-vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "next quickfix" })
-vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "prev quickfix" })
-
 -- goto
 vim.keymap.set("n", "g.", "gi", { desc = "goto last insertion and insert" })
 vim.keymap.set("n", "g,", "gv", { desc = "goto last visual selection" })
