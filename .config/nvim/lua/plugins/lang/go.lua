@@ -3,26 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     optional = true,
 
-    init = function()
-      -- workaround for gopls not supporting semanticTokensProvider (ref: https://github.com/golang/go/issues/54531#issuecomment-1464982242)
-      util.lsp.on_attach(function(client, _)
-        if client.name ~= "gopls" then
-          return
-        end
-
-        if not client.server_capabilities.semanticTokensProvider then
-          client.server_capabilities.semanticTokensProvider = {
-            full = true,
-            legend = {
-              tokenTypes = client.config.capabilities.textDocument.semanticTokens.tokenTypes,
-              tokenModifiers = client.config.capabilities.textDocument.semanticTokens.tokenModifiers,
-            },
-            range = true,
-          }
-        end
-      end)
-    end,
-
     opts = {
       servers = {
         gopls = {
