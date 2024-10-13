@@ -68,3 +68,12 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "CursorMoved", "CursorMovedI" }, {
     end
   end,
 })
+
+-- check if we need to reload the file
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd("checktime")
+    end
+  end,
+})
