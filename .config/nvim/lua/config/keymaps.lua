@@ -1,9 +1,6 @@
 -- lazy
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
 
--- save
-vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<cmd>update<CR><esc>", { desc = "save" })
-
 -- better up/down
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count? 'k' : 'gk'", { expr = true, desc = "up" })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count? 'j' : 'gj'", { expr = true, desc = "down" })
@@ -38,10 +35,6 @@ vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "next se
 vim.keymap.set("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "prev search result" })
 vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "prev search result" })
-
--- goto
-vim.keymap.set("n", "g.", "gi", { desc = "goto last insertion and insert" })
-vim.keymap.set("n", "g,", "gv", { desc = "goto last visual selection" })
 
 -- quit
 vim.keymap.set("n", "<leader>q", "<cmd>qa<CR>", { desc = "quit" })
