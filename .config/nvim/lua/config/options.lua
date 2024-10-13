@@ -2,9 +2,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- clipboard
-vim.schedule(function()
-  vim.opt.clipboard = "unnamedplus"
-end)
+if not vim.env.SSH_TTY then -- NOTE: only set clipboard if not in ssh (see `:h clipboard-osc52`)
+  vim.schedule(function()
+    vim.opt.clipboard = "unnamedplus"
+  end)
+end
 
 -- undofile
 vim.opt.undofile = true
