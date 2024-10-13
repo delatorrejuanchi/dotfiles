@@ -91,29 +91,11 @@ return {
         desc = "goto references",
       },
       {
-        "grR",
-        function()
-          vim.lsp.buf.references({ include_declaration = true }, {
-            on_list = function(t)
-              setqflist_or_open(t, true)
-            end,
-          })
-        end,
-        desc = "goto references (all)",
-      },
-      {
         "gri",
         function()
           vim.lsp.buf.implementation({ on_list = setqflist_or_open })
         end,
         desc = "goto implementation",
-      },
-      {
-        "grI",
-        function()
-          vim.lsp.buf.implementation({ on_list = setqflist_or_open })
-        end,
-        desc = "goto implementation (all)",
       },
       { "grt", vim.lsp.buf.type_definition, desc = "goto type definition" },
     },
