@@ -5,6 +5,7 @@
 ---@field terminal util.terminal
 ---@field notes util.notes
 ---@field ui util.ui
+---@field health util.health
 local M = {
   lsp = require("util.lsp"),
   git = require("util.git"),
@@ -12,6 +13,7 @@ local M = {
   terminal = require("util.terminal"),
   notes = require("util.notes"),
   ui = require("util.ui"),
+  health = require("util.health"),
 }
 
 ---@param ms number
@@ -34,11 +36,9 @@ function M.debounce(ms, fn)
   end
 end
 
-M.CREATE_UNDO = vim.api.nvim_replace_termcodes("<c-G>u", true, true, true)
-function M.create_undo()
-  if vim.api.nvim_get_mode().mode == "i" then
-    vim.api.nvim_feedkeys(M.CREATE_UNDO, "n", false)
-  end
+--- @param text string
+function M.copy_to_clipboard(text)
+  vim.fn.setreg("+", text)
 end
 
 ---@param search string
