@@ -10,12 +10,12 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- move lines up/down
-vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { desc = "move line up" })
-vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "move line up" })
-vim.keymap.set("i", "<A-Up>", "<esc>:m .-2<CR>==gi", { desc = "move line up" })
-vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { desc = "move line down" })
-vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "move line down" })
-vim.keymap.set("i", "<A-Down>", "<esc>:m .+1<CR>==gi", { desc = "move line down" })
+vim.keymap.set("n", "<A-Down>", "<cmd>execute 'move .+' . v:count1<CR>==", { desc = "move line down" })
+vim.keymap.set("i", "<A-Down>", "<esc><cmd>m .+1<CR>==gi", { desc = "move line down" })
+vim.keymap.set("v", "<A-Down>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<CR>gv=gv", { desc = "move line down" })
+vim.keymap.set("n", "<A-Up>", "<cmd>execute 'move .-' . (v:count1 + 1)<CR>==", { desc = "move line up" })
+vim.keymap.set("i", "<A-Up>", "<esc><cmd>m .-2<CR>==gi", { desc = "move line up" })
+vim.keymap.set("v", "<A-Up>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<CR>gv=gv", { desc = "move line up" })
 
 -- splits
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "split window horizontally" })
@@ -61,3 +61,8 @@ vim.keymap.set("n", "<leader>cf", function() util.quick_grep("FIXME") end, { des
 
 -- settings
 vim.keymap.set("n", "<leader>uc", util.ui.toggle_stay_centered, { desc = "toggle stay centered" })
+
+-- super-tab
+vim.keymap.set("i", "<Tab>", function()
+  return vim.fn.pumvisible() == 1 and not vim.snippet.active({ direction = 1 }) and "<C-y>" or "<Tab>"
+end, { expr = true })
