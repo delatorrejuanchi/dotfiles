@@ -23,7 +23,7 @@ vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 vim.opt.cmdheight = 0
 vim.opt.showmode = false
 vim.opt.fillchars = { eob = " " }
-vim.opt.shortmess:append({ I = true })
+vim.opt.shortmess:append({ I = true, c = true, C = true })
 
 -- line numbers
 vim.opt.number = true
@@ -61,6 +61,9 @@ vim.opt.splitright = true
 vim.opt.sessionoptions:remove("blank")
 vim.opt.sessionoptions:remove("buffers")
 vim.opt.sessionoptions:remove("tabpages")
+
+-- autocomplete
+vim.opt.completeopt = "menu,noinsert,fuzzy"
 
 -- treesitter language overrides
 vim.treesitter.language.register("bash", "zsh")

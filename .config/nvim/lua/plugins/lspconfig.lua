@@ -112,6 +112,10 @@ return {
             end,
           })
         end
+
+        if client.supports_method("textDocument/completion") then
+          vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+        end
       end)
 
       if opts.servers then
