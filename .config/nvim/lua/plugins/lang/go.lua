@@ -11,6 +11,7 @@ return {
               usePlaceholders = true,
               staticcheck = true,
               semanticTokens = true,
+              experimentalPostfixCompletions = true,
               allExperiments = true,
             },
           },
