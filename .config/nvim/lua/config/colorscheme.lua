@@ -42,6 +42,8 @@ local semantic_colors = {
   secondary = colors.white,
   disabled = colors.bright_black,
 
+  bg_highlight = colors.bright_black,
+
   accent_primary = colors.bright_blue,
   accent_secondary = colors.bright_yellow,
 
@@ -61,7 +63,7 @@ local groups = {
   Conceal = { ctermfg = semantic_colors.disabled },
   CurSearch = { ctermfg = semantic_colors.black, ctermbg = semantic_colors.accent_secondary },
   CursorColumn = { link = "CursorLine" },
-  CursorLine = { ctermbg = semantic_colors.disabled },
+  CursorLine = { ctermbg = semantic_colors.bg_highlight },
   CursorLineFold = { link = "FoldColumn" },
   CursorLineNr = { ctermfg = semantic_colors.primary },
   CursorLineSign = { link = "SignColumn" },
@@ -83,12 +85,13 @@ local groups = {
   LineNr = { ctermfg = semantic_colors.secondary },
   LineNrAbove = { link = "LineNr" },
   LineNrBelow = { link = "LineNr" },
-  MatchParen = { ctermfg = semantic_colors.accent_secondary, bold = true },
+  MatchParen = { ctermfg = semantic_colors.accent_primary, bold = true },
   ModeMsg = { ctermfg = semantic_colors.accent_primary },
   MoreMsg = { ctermfg = semantic_colors.hint },
   MsgArea = { link = "NONE" },
   MsgSeparator = { link = "StatusLine" },
-  NonText = { ctermfg = semantic_colors.secondary },
+  NonText = { ctermfg = semantic_colors.disabled },
+  Normal = {},
   NormalFloat = {},
   NormalNC = { link = "NONE" },
   Pmenu = { ctermfg = semantic_colors.secondary, ctermbg = semantic_colors.black },
@@ -105,6 +108,7 @@ local groups = {
   QuickFixLine = { ctermfg = semantic_colors.accent_primary, ctermbg = semantic_colors.disabled },
   Search = { ctermfg = semantic_colors.black, ctermbg = semantic_colors.accent_primary },
   SignColumn = { ctermfg = semantic_colors.secondary },
+  SnippetTabstop = { link = "Visual" },
   SpecialKey = { ctermfg = semantic_colors.error },
   SpellBad = { ctermfg = semantic_colors.error, undercurl = true },
   SpellCap = { ctermfg = semantic_colors.warning, undercurl = true },
@@ -139,7 +143,7 @@ local groups = {
   Float = { link = "Number" },
 
   Identifier = { ctermfg = semantic_colors.primary },
-  Function = { ctermfg = semantic_colors.accent_primary, bold = true },
+  Function = { ctermfg = semantic_colors.accent_primary },
 
   Statement = { ctermfg = colors.magenta },
   Conditional = { link = "Statement" },
@@ -160,7 +164,7 @@ local groups = {
   StorageClass = { link = "Type" },
   Typedef = { link = "Type" },
 
-  Special = { ctermfg = semantic_colors.accent_primary },
+  Special = { ctermfg = semantic_colors.accent_primary, bold = true },
   Tag = { link = "Special" },
   SpecialChar = { link = "Special" },
   Delimiter = { link = "Special" },
@@ -193,7 +197,7 @@ local groups = {
   ["@variable.builtin"] = { ctermfg = semantic_colors.red },
   -- ["@variable.member"] = {},
   ["@variable.parameter"] = { ctermfg = semantic_colors.yellow },
-  -- ["@variable.parameter.builtin"] = {},
+  ["@variable.parameter.builtin"] = { link = "@variable.parameter" },
 
   ["@constant"] = { link = "Constant" },
   ["@constant.builtin"] = { ctermfg = semantic_colors.red },
@@ -206,7 +210,7 @@ local groups = {
 
   ["@string"] = { link = "String" },
   ["@string.documentation"] = { link = "@comment.documentation" },
-  -- ["@string.regexp"] = {},
+  ["@string.regexp"] = { ctermfg = semantic_colors.yellow },
   -- ["@string.escape"] = {},
   -- ["@string.special"] = {},
   -- ["@string.special.symbol"] = {},
@@ -260,7 +264,7 @@ local groups = {
   ["@punctuation"] = { link = "Delimiter" },
   -- ["@punctuation.delimeter"] = {},
   -- ["@punctuation.bracket"] = {},
-  -- ["@punctuation.special"] = { link = "Special" },
+  ["@punctuation.special"] = { link = "Special" },
 
   ["@comment"] = { link = "Comment" },
   ["@comment.documentation"] = { link = "Comment" },
@@ -348,7 +352,6 @@ local groups = {
   LspReferenceText = { link = "Visual" },
   LspReferenceWrite = { link = "LspReferenceText" },
   LspSignatureActiveParameter = { link = "Visual" },
-  SnippetTabstop = { link = "Visual" },
 }
 
 for group, attributes in pairs(groups) do
