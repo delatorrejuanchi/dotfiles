@@ -1,7 +1,7 @@
 ---@class util.lsp
 local M = {}
 
----@param fn fun(client, buffer)
+---@param fn fun(client: vim.lsp.Client, buffer: integer)
 function M.on_attach(fn)
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)

@@ -86,7 +86,7 @@ return {
       {
         "grr",
         function()
-          vim.lsp.buf.references({ include_declaration = false }, { on_list = setqflist_or_open })
+          vim.lsp.buf.references({ includeDeclaration = false }, { on_list = setqflist_or_open })
         end,
         desc = "goto references",
       },
@@ -102,7 +102,7 @@ return {
 
     config = function(_, opts)
       util.lsp.on_attach(function(client, bufnr)
-        if client.supports_method("textDocument/codeLens") then
+        if client:supports_method("textDocument/codeLens", bufnr) then
           vim.lsp.codelens.refresh({ bufnr = bufnr })
 
           vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
@@ -113,7 +113,7 @@ return {
           })
         end
 
-        if client.supports_method("textDocument/completion") then
+        if client:supports_method("textDocument/completion", bufnr) then
           vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 
           vim.api.nvim_create_autocmd("InsertCharPre", {
@@ -128,6 +128,11 @@ return {
             end,
           })
         end
+
+        -- TODO: consider enabling inlay hints
+        -- if client:supports_method("textDocument/inlayHint", bufnr) then
+        --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        -- end
       end)
 
       if opts.servers then
