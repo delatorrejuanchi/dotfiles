@@ -115,6 +115,18 @@ return {
 
         if client.supports_method("textDocument/completion") then
           vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+
+          vim.api.nvim_create_autocmd("InsertCharPre", {
+            buffer = bufnr,
+            callback = function()
+              if vim.fn.pumvisible() == 1 or vim.fn.state("m") == "m" or vim.o.buftype ~= "" then
+                return
+              end
+
+              local key = vim.keycode("<C-x><C-o>")
+              vim.api.nvim_feedkeys(key, "m", false)
+            end,
+          })
         end
       end)
 

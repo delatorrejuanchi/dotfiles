@@ -77,15 +77,3 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave", "CursorHo
     end
   end,
 })
-
--- open autocomplete automatically when typing
-vim.api.nvim_create_autocmd("InsertCharPre", {
-  callback = function()
-    if vim.fn.pumvisible() == 1 or vim.fn.state("m") == "m" or vim.o.buftype ~= "" then
-      return
-    end
-
-    local key = vim.keycode("<C-x><C-o>")
-    vim.api.nvim_feedkeys(key, "m", false)
-  end,
-})
