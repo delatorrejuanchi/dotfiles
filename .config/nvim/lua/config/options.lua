@@ -33,7 +33,6 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 
 -- folds
-vim.opt.foldcolumn = "0"
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
