@@ -75,9 +75,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "folke/neodev.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      {
+        "folke/lazydev.nvim",
+        dependencies = { "Bilal2453/luvit-meta" },
+
+        ft = "lua",
+
+        opts = {
+          library = {
+            { path = "luvit-meta/library", words = { "vim%.uv" } },
+          },
+        },
+      },
     },
 
     event = "BufReadPre",
