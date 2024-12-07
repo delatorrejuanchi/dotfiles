@@ -15,22 +15,13 @@ return {
           redhat = { telemetry = { enabled = false } },
           yaml = {
             keyOrdering = false,
+            format = {
+              enable = true,
+            },
             schemaStore = { enable = false },
           },
         },
       },
-    },
-    setup = {
-      yamlls = function()
-        -- NOTE: it seems like yamlls doesn't set the `documentFormattingProvider` capability automatically.
-        util.lsp.on_attach(function(client, _)
-          if client.name ~= "yamlls" then
-            return
-          end
-
-          client.server_capabilities.documentFormattingProvider = true
-        end)
-      end,
     },
   },
 }
