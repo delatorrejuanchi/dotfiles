@@ -8,18 +8,17 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              runtime = { version = "LuaJIT" },
               workspace = {
                 checkThirdParty = false,
-                library = {
-                  "${3rd}/luv/library",
-                },
               },
               codeLens = {
                 enable = true,
               },
               completion = {
                 callSnippet = "Replace",
+              },
+              doc = {
+                privateName = { "^_" },
               },
             },
           },
