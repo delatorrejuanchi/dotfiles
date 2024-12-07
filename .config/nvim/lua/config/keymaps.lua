@@ -54,10 +54,8 @@ vim.keymap.set("n", "<leader>or", util.notes.move_to_resources, { desc = "move t
 vim.keymap.set("n", "<leader>od", util.notes.move_to_archive, { desc = "move to archive" })
 
 -- quick grep
--- stylua: ignore start
-vim.keymap.set("n", "<leader>ct", function() util.quick_grep("TODO") end, { desc = "find TODOs" })
-vim.keymap.set("n", "<leader>cf", function() util.quick_grep("FIXME") end, { desc = "find FIXMEs" })
--- stylua: ignore end
+vim.keymap.set("n", "<leader>ct", util.find_todos, { desc = "find TODOs" })
+vim.keymap.set("n", "<leader>cf", util.find_fixmes, { desc = "find FIXMEs" })
 
 -- settings
 vim.keymap.set("n", "<leader>uc", util.ui.toggle_stay_centered, { desc = "toggle stay centered" })

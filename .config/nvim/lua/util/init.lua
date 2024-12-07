@@ -48,4 +48,12 @@ function M.quick_grep(search)
   vim.cmd("cfirst")
 end
 
+function M.find_todos()
+  M.quick_grep("TODO")
+end
+
+function M.find_fixmes()
+  M.quick_grep("FIXME")
+end
+
 return M
