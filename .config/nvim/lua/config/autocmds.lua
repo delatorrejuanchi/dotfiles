@@ -12,14 +12,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
--- do not insert a comment leader after o or O in normal mode
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    vim.cmd("set fo-=o")
-  end,
-})
-
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "lspinfo", "qf", "checkhealth" },
