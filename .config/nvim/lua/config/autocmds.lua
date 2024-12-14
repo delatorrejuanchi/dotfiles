@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function(event)
     local buf = event.buf
-    if vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) or vim.b[buf].jumped_to_last_location then
+    if vim.b[buf].jumped_to_last_location then
       return
     end
 
