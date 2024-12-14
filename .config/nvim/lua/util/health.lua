@@ -4,7 +4,7 @@ local M = {}
 function M.check()
   vim.health.start("config")
 
-  for _, cmd in ipairs({ "git", "rg", { "fd", "fdfind" }, "lazygit", "make" }) do
+  for _, cmd in ipairs({ "git", "rg", { "fd", "fdfind" }, "lazygit", "make", "fzf", "npm", "go", "opam" }) do
     local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
     local commands = type(cmd) == "string" and { cmd } or cmd
     ---@cast commands string[]
