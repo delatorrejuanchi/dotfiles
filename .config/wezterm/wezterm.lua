@@ -44,11 +44,11 @@ config.keys = {
 
 	{ key = "|", mods = "LEADER|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) }, -- FIXME: on macOS, this keybind works without adding SHIFT; on linux, it doesn't seem to work correctly.
 	{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "f", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
+	{ key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
 	{ key = "s", mods = "LEADER", action = workspace.open_switcher("Switch to workspace:") },
 	{ key = "v", mods = "LEADER", action = workspace.open_switcher("Switch to workspace in Neovim:", { "nvim" }) },
-	{ key = "q", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+	{ key = "x", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 }
 
 return config
