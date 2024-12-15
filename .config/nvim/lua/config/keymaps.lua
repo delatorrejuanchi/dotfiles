@@ -53,7 +53,8 @@ vim.keymap.set("n", "<leader>oa", util.notes.move_to_areas, { desc = "move to ar
 vim.keymap.set("n", "<leader>or", util.notes.move_to_resources, { desc = "move to resources" })
 vim.keymap.set("n", "<leader>od", util.notes.move_to_archive, { desc = "move to archive" })
 
--- quick grep
+-- quickfix
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "diagnostics" })
 vim.keymap.set("n", "<leader>ct", util.find_todos, { desc = "find TODOs" })
 vim.keymap.set("n", "<leader>cf", util.find_fixmes, { desc = "find FIXMEs" })
 
