@@ -60,8 +60,3 @@ vim.keymap.set("n", "<leader>cf", util.find_fixmes, { desc = "find FIXMEs" })
 
 -- settings
 vim.keymap.set("n", "<leader>uc", util.ui.toggle_stay_centered, { desc = "toggle stay centered" })
-
--- super-tab
-vim.keymap.set("i", "<Tab>", function()
-  return vim.fn.pumvisible() == 1 and not vim.snippet.active({ direction = 1 }) and "<C-y>" or "<Tab>"
-end, { expr = true })
