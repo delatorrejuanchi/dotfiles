@@ -21,4 +21,24 @@ return {
       end)
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+
+        opts = function(_, opts)
+          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "black", "isort" })
+        end,
+      },
+    },
+
+    opts = {
+      formatters_by_ft = {
+        python = { "black", "isort" },
+      },
+    },
+  },
 }
