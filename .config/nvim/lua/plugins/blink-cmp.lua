@@ -7,11 +7,21 @@ return {
 
     opts = {
       keymap = { preset = "super-tab" },
+
       completion = {
         ghost_text = { enabled = false },
+
+        documentation = {
+          auto_show = true,
+        },
       },
+
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+      },
+
+      cmdline = {
+        enabled = false,
       },
     },
 
