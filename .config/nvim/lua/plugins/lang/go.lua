@@ -73,7 +73,7 @@ return {
         },
 
         golines = {
-          prepend_args = { "-m", "141", "--no-reformat-tags" },
+          prepend_args = { "-m", "120", "--no-reformat-tags" },
         },
       },
     },
