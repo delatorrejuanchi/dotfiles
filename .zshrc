@@ -2,6 +2,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 [[ ! -r "$HOME/.local/bin/env" ]] || source "$HOME/.local/bin/env"
 
+# options
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+
 # fzf
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
 
