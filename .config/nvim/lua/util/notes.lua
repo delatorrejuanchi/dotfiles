@@ -73,34 +73,6 @@ function M.new()
   M.create_note(M.inbox, name, os.time())
 end
 
-local function move_note(dir)
-  assert(vim.fn.resolve(vim.fn.expand("%:p:h")) == vim.fn.resolve(M.inbox), "note is not in the inbox")
-
-  if vim.fn.isdirectory(dir) == 0 then
-    vim.fn.mkdir(dir, "p")
-  end
-
-  vim.cmd("saveas " .. dir .. "/" .. vim.fn.expand("%:t"))
-  vim.cmd("silent !rm " .. M.inbox .. "/" .. vim.fn.expand("%:t"))
-  vim.cmd("bwipeout! #")
-end
-
-function M.move_to_projects()
-  move_note(M.projects)
-end
-
-function M.move_to_areas()
-  move_note(M.areas)
-end
-
-function M.move_to_resources()
-  move_note(M.resources)
-end
-
-function M.move_to_archive()
-  move_note(M.archive)
-end
-
 ---@param name string
 ---@param time integer?
 ---@return string

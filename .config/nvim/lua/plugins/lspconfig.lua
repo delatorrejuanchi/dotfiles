@@ -79,13 +79,12 @@ return {
       "williamboman/mason-lspconfig.nvim",
       {
         "folke/lazydev.nvim",
-        dependencies = { "Bilal2453/luvit-meta" },
 
         ft = "lua",
 
         opts = {
           library = {
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
           },
         },
       },

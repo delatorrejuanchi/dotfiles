@@ -65,7 +65,6 @@ return {
             "--skip-generated",
             "--section=standard",
             "--section=localmodule",
-            "--section=Prefix(github.com/PaddleHQ)",
             "--section=default",
             "--custom-order",
             "$FILENAME",
@@ -75,33 +74,6 @@ return {
         golines = {
           prepend_args = { "-m", "120", "--no-reformat-tags" },
         },
-      },
-    },
-  },
-  {
-    "nvim-neotest/neotest",
-    optional = true,
-
-    dependencies = { "fredrikaverpil/neotest-golang" },
-
-    opts = function(_, opts)
-      require("neotest-golang")({ dap_go_enabled = require("lazy.core.config").plugins["nvim-dap"] })
-
-      opts.adapters = vim.list_extend(opts.adapters or {}, { require("neotest-golang") })
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-
-    dependencies = {
-      { "leoluz/nvim-dap-go", opts = {} },
-      {
-        "williamboman/mason.nvim",
-
-        opts = function(_, opts)
-          opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, { "delve" })
-        end,
       },
     },
   },

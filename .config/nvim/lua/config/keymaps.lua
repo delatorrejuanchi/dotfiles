@@ -48,15 +48,8 @@ vim.keymap.set("n", "<leader>o/", util.notes.live_grep, { desc = "live grep note
 vim.keymap.set("n", "<leader>on", util.notes.new, { desc = "new note" })
 vim.keymap.set("n", "<leader>ot", util.notes.today, { desc = "today's note" })
 vim.keymap.set("n", "<leader>oo", util.notes.scratchpad, { desc = "scratchpad" })
-vim.keymap.set("n", "<leader>op", util.notes.move_to_projects, { desc = "move to projects" })
-vim.keymap.set("n", "<leader>oa", util.notes.move_to_areas, { desc = "move to areas" })
-vim.keymap.set("n", "<leader>or", util.notes.move_to_resources, { desc = "move to resources" })
-vim.keymap.set("n", "<leader>od", util.notes.move_to_archive, { desc = "move to archive" })
 
 -- quickfix
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "diagnostics" })
 vim.keymap.set("n", "<leader>ct", util.find_todos, { desc = "find TODOs" })
 vim.keymap.set("n", "<leader>cf", util.find_fixmes, { desc = "find FIXMEs" })
-
--- settings
-vim.keymap.set("n", "<leader>uc", util.ui.toggle_stay_centered, { desc = "toggle stay centered" })

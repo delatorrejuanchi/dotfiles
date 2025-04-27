@@ -1,8 +1,5 @@
 ---@class util.git
----@field blame util.git.blame
-local M = {
-  blame = require("util.git.blame"),
-}
+local M = {}
 
 function M:lazygit()
   util.terminal.open("lazygit", { size = { width = 1, height = 1 } })

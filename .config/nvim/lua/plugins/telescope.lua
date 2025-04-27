@@ -7,17 +7,7 @@ return {
   cmd = { "Telescope" },
 
   keys = {
-    {
-      "<leader><space>",
-      function()
-        if util.git:root() then
-          require("telescope.builtin").git_files({ cwd = util.git:root() })
-        else
-          require("telescope.builtin").find_files()
-        end
-      end,
-      desc = "find files",
-    },
+    { "<leader><space>", "<cmd>Telescope find_files<CR>", desc = "find files" },
     { "<leader>.", "<cmd>Telescope buffers<CR>", desc = "buffers" },
     { "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "live grep" },
   },
@@ -37,8 +27,8 @@ return {
     },
 
     pickers = {
-      git_files = {
-        show_untracked = true,
+      find_files = {
+        hidden = true,
       },
     },
   },

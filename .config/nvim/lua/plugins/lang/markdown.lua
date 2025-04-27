@@ -29,26 +29,4 @@ return {
       },
     },
   },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-
-    ft = "markdown",
-
-    opts = {
-      code = {
-        sign = false,
-        width = "block",
-        left_pad = 1,
-        right_pad = 1,
-      },
-      heading = {
-        sign = false,
-        icons = {},
-        width = "block",
-      },
-    },
-  },
 }

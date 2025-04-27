@@ -4,7 +4,6 @@
 ---@field plugin util.plugin
 ---@field terminal util.terminal
 ---@field notes util.notes
----@field ui util.ui
 ---@field health util.health
 local M = {
   lsp = require("util.lsp"),
@@ -12,7 +11,6 @@ local M = {
   plugin = require("util.plugin"),
   terminal = require("util.terminal"),
   notes = require("util.notes"),
-  ui = require("util.ui"),
   health = require("util.health"),
 }
 
@@ -34,11 +32,6 @@ function M.debounce(ms, fn)
       vim.schedule_wrap(fn)(unpack(argv))
     end)
   end
-end
-
---- @param text string
-function M.copy_to_clipboard(text)
-  vim.fn.setreg("+", text)
 end
 
 ---@param search string

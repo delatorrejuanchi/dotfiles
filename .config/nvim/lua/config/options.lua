@@ -48,10 +48,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
--- scrolloff
-vim.opt.scrolloff = 10
-vim.opt.sidescrolloff = 20
-
 -- split
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -60,16 +56,3 @@ vim.opt.splitright = true
 vim.opt.sessionoptions:remove("blank")
 vim.opt.sessionoptions:remove("buffers")
 vim.opt.sessionoptions:remove("tabpages")
-
--- autocomplete
-vim.opt.completeopt = "menu,noinsert,fuzzy"
-
--- treesitter language overrides
-vim.treesitter.language.register("bash", "zsh")
-
--- filetype overrides
-vim.filetype.add({
-  pattern = {
-    [".*/hypr/.*%.conf"] = "hyprlang",
-  },
-})
